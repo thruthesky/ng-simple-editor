@@ -121,6 +121,41 @@
           }
         }
       }
+    },
+    "ng-simple-editor": {
+      "root": "projects/ng-simple-editor",
+      "sourceRoot": "projects/ng-simple-editor/src",
+      "projectType": "library",
+      "prefix": "ng",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/ng-simple-editor/tsconfig.lib.json",
+            "project": "projects/ng-simple-editor/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ng-simple-editor/src/test.ts",
+            "tsConfig": "projects/ng-simple-editor/tsconfig.spec.json",
+            "karmaConfig": "projects/ng-simple-editor/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/ng-simple-editor/tsconfig.lib.json",
+              "projects/ng-simple-editor/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "ng-simple-editor-app"

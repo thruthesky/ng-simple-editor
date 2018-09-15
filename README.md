@@ -1,58 +1,75 @@
-# angular-wysiwyg-editor
+# Angular Simple Editor
+
+## Why
+
+* I search Angular editors and I couldn't find simple one. All of them has dependencies like jQury, Bootstrap, Fontawesome.
+* So I made one for myself. Deadly simple yet, extendible. No dependencies.
 
 ## Install
 
-This is a github repository containg a simple wysiwyg component module.
-
-* You can simply git submodule add and import wysiwyg component module
-
 ```` sh
-git submodule add https://github.com/thruthesky/angular-wysiwyg-editor src/app/modules/angular-wysiwyg-editor
+npm install --save ng-simple-editor
 ````
 
-* And add it to app module or any where.
+## Usage
+
+### How to set up
+
+* And add `NgSimpleEditorModule` to AppModule or any where.
 
 ```` typescript
-import { EditorModule } from 'app/modules/angular-wysiwyg-editor/editor.module';
+import { NgSimpleEditorModule } from 'ng-simple-editor';
 @NgModule({
+  ...
   imports: [
-    EditorModule
+    NgSimpleEditorModule
   ],
+  ...
 })
+export class AppModule { }
 ````
 
-* Show like below.
-  If [buttons] is omitted, then it shows all the possible butttons.
+### How use it in template
+
+* Use in template like below.
 
 ```` html
-  <app-editor-component #editorComponent
-    [buttons]="['bold', 'italic', 'underline', 'fontsize', 'forecolor', 'backcolor', 'highlight', 'link', 'unink', 'table', 'formatblock', 'insertline', 'insertimage', 'orderedlist', 'unorderedlist', 'left', 'center', 'removeformat', 'strike', 'big', 'normal']"
-  ></app-editor-component>
+<ng-simple-editor #editor></ng-simple-editor>
+content: {{ editor.content }}
 ````
 
-* And put/get the HTML content of the editor like below.
+* Add buttons.
+  * By default, if [buttons] is omitted, then it shows all the possible butttons.
+  * You can add indivisual buttons.
+
+```` html
+  <ng-simple-editor #editor
+    [buttons]="['bold', 'italic', 'underline', 'fontsize', 'forecolor', 'backcolor', 'highlight', 'link', 'unink', 'table', 'formatblock', 'insertline', 'insertimage', 'orderedlist', 'unorderedlist', 'left', 'center', 'removeformat', 'strike', 'big', 'normal']"
+  ></ng-simple-editor>
+  content: {{ editor.content }}
+````
+
+* And put/get HTML into the editor.
 
 ```` typescript
-/**
- * Put html into the editor
- */
-ngAfterViewInit() {
-    this.editorComponent.putContent( this.post['content_original'] );
-}
-/**
- * Get the HTML of editor
- */
-const html = this.editorComponent.getContent();
+  @ViewChild('editor') editor: NgSimpleEditorComponent;
+  ngAfterContentInit() {
+    this.editor.putContent(`<h1>Let's Edit!</h1>`);
+  }
+  /**
+   * Get the HTML of editor
+   */
+  const html = this.editorComponent.getContent();
 ````
 
 * There is another handy way to insert HTML into editor.
   When the component is created dynamically using `*ngIf=" ... "`, it is not easy to know when `@ViewChild() editor: EditComponet;` is ready to use `editor.putContent()`. It often causes `calling putContent() of undefined`. In this case you can use `[init]` property to insert the default HTML content into editor.
 
 ```` html
-<app-editor-component #editorComponent *ngIf=" mode != 'fake' "
+<ng-simple-editor #editor *ngIf=" mode != 'fake' "
   [init]=" { content: comment.content_original }"
   [buttons]="['bold', 'italic', 'unerline', 'fontsize', 'forecolor', 'backcolor', 'highlight', 'link', 'unink', 'table', 'formatblock', 'insertline', 'insertimage', 'orderedlist', 'unorderedlist', 'left', 'center', 'removeformat', 'strike', 'big', 'normal']"
-></app-editor-component>
+></ng-simple-editor>
 ````
 
 * How to set cursor.
@@ -60,14 +77,11 @@ const html = this.editorComponent.getContent();
   For comment write/edit, you will need to put cursor on editor.
 
 ```` html
-      <app-editor-component #editorComponent *ngIf=" mode != 'fake' "
+      <ng-simple-editor #editorComponent *ngIf=" mode != 'fake' "
         [init]=" { content: comment?.content_original, cursor: true }"
-        [buttons]="['bold', 'italic', 'underline', 'strike', 'fontsize', 'forecolor', 'backcolor', 'highlight', 'link', 'unink', 'table', 'formatblock', 'insertline', 'insertimage', 'orderedlist', 'unorderedlist', 'left', 'center', 'removeformat', 'big', 'normal']"
-      ></app-editor-component>
+        [buttons]="['bold', ..., 'normal']"
+      ></ng-simple-editor>
 ````
-
-* See examples folder to get sample working code.
-    You can delete sample folder if you don't want.
 
 ## Buttons
 

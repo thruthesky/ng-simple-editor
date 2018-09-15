@@ -1,0 +1,11 @@
+{
+  "name": "ng-simple-editor",
+  "version": "0.0.6",
+  "description": "This is a dead simple Angular wysiwyg editor. I made it because I cannot find any editor which has no depencies.",
+  "keywords" :["Angular","Editor","Wysiwyg"],
+  "license" : "GPL",
+  "peerDependencies": {
+    "@angular/common": "^6.0.0-rc.0 || ^6.0.0",
+    "@angular/core": "^6.0.0-rc.0 || ^6.0.0"
+  }
+}
