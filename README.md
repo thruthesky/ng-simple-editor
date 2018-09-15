@@ -1,27 +1,74 @@
-# NgSimpleEditorApp
+# angular-wysiwyg-editor
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.2.1.
+## Install
 
-## Development server
+This is a github repository containg a simple wysiwyg component module.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+* You can simply git submodule add and import wysiwyg component module
 
-## Code scaffolding
+```` sh
+git submodule add https://github.com/thruthesky/angular-wysiwyg-editor src/app/modules/angular-wysiwyg-editor
+````
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+* And add it to app module or any where.
 
-## Build
+```` typescript
+import { EditorModule } from 'app/modules/angular-wysiwyg-editor/editor.module';
+@NgModule({
+  imports: [
+    EditorModule
+  ],
+})
+````
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+* Show like below.
+  If [buttons] is omitted, then it shows all the possible butttons.
 
-## Running unit tests
+```` html
+  <app-editor-component #editorComponent
+    [buttons]="['bold', 'italic', 'underline', 'fontsize', 'forecolor', 'backcolor', 'highlight', 'link', 'unink', 'table', 'formatblock', 'insertline', 'insertimage', 'orderedlist', 'unorderedlist', 'left', 'center', 'removeformat', 'strike', 'big', 'normal']"
+  ></app-editor-component>
+````
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+* And put/get the HTML content of the editor like below.
 
-## Running end-to-end tests
+```` typescript
+/**
+ * Put html into the editor
+ */
+ngAfterViewInit() {
+    this.editorComponent.putContent( this.post['content_original'] );
+}
+/**
+ * Get the HTML of editor
+ */
+const html = this.editorComponent.getContent();
+````
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+* There is another handy way to insert HTML into editor.
+  When the component is created dynamically using `*ngIf=" ... "`, it is not easy to know when `@ViewChild() editor: EditComponet;` is ready to use `editor.putContent()`. It often causes `calling putContent() of undefined`. In this case you can use `[init]` property to insert the default HTML content into editor.
 
-## Further help
+```` html
+<app-editor-component #editorComponent *ngIf=" mode != 'fake' "
+  [init]=" { content: comment.content_original }"
+  [buttons]="['bold', 'italic', 'unerline', 'fontsize', 'forecolor', 'backcolor', 'highlight', 'link', 'unink', 'table', 'formatblock', 'insertline', 'insertimage', 'orderedlist', 'unorderedlist', 'left', 'center', 'removeformat', 'strike', 'big', 'normal']"
+></app-editor-component>
+````
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+* How to set cursor.
+  For post writing, you will need to put cursor on subject input tag.
+  For comment write/edit, you will need to put cursor on editor.
+
+```` html
+      <app-editor-component #editorComponent *ngIf=" mode != 'fake' "
+        [init]=" { content: comment?.content_original, cursor: true }"
+        [buttons]="['bold', 'italic', 'underline', 'strike', 'fontsize', 'forecolor', 'backcolor', 'highlight', 'link', 'unink', 'table', 'formatblock', 'insertline', 'insertimage', 'orderedlist', 'unorderedlist', 'left', 'center', 'removeformat', 'big', 'normal']"
+      ></app-editor-component>
+````
+
+* See examples folder to get sample working code.
+    You can delete sample folder if you don't want.
+
+## Buttons
+
+* Buttons on editor appears in the order as they were given by [buttons] @Input() property.
