@@ -576,6 +576,12 @@ export class NgSimpleEditorComponent implements OnInit, OnChanges, AfterViewInit
     if (!this.getCaret()) {
       this.setEndOfContenteditable();
     }
+    /**
+     * If the length of src is less than 9, then it is being considered wrong url.
+     */
+    if ( src.length < 9 ) {
+      return;
+    }
     const tag = `<IMG class="editor-image" SRC="${src}" ALT="${name}" idx="${idx}" style="max-width: 100%;"><BR>Image: ${name}<BR>`;
     this.execCommand('insertHTML', false, tag);
     this.setEndOfContenteditable();
