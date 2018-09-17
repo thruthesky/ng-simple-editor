@@ -336,6 +336,10 @@ export class NgSimpleEditorComponent implements OnInit, OnChanges, AfterViewInit
   }
 
   resetButtons() {
+    /**
+     * Empty container
+     */
+    this.containerButtons = [];
 
     console.log('resetButtons()');
 
