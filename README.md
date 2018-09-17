@@ -2,16 +2,22 @@
 
 ## Why
 
-* I search Angular editors and I couldn't find simple one. All of them has dependencies like jQury, Bootstrap, Fontawesome.
-* So I made one for myself. Deadly simple yet, extendible. No dependencies.
+* I search Angular/Ionic Web editors and I couldn't find simple one. All of them have dependencies like jQury, Bootstrap, Fontawesome, etc.
+* So I made one for myself. It's deadly simple. Easy to edit. No dependencies at all.
 
-## Install
+## Todo
+
+* More design
+* More documentation
+* Better coding style
+
+## How to Install
 
 ```` sh
 npm install --save ng-simple-editor
 ````
 
-## Usage
+## How to Use
 
 ### How to set up
 
@@ -29,9 +35,9 @@ import { NgSimpleEditorModule } from 'ng-simple-editor';
 export class AppModule { }
 ````
 
-### How use it in template
+### How to use it in template
 
-* Use in template like below.
+* Very simple.
 
 ```` html
 <ng-simple-editor #editor></ng-simple-editor>
@@ -40,7 +46,7 @@ content: {{ editor.content }}
 
 * Add buttons.
   * By default, if [buttons] is omitted, then it shows all the possible butttons.
-  * You can add indivisual buttons.
+  * You can add indivisual buttons. Order of buttons matters in the order of display.
 
 ```` html
   <ng-simple-editor #editor
@@ -86,3 +92,7 @@ content: {{ editor.content }}
 ## Buttons
 
 * Buttons on editor appears in the order as they were given by [buttons] @Input() property.
+
+## Tips
+
+* On mobile, it is not easy selecting texts and apply HTML. So, in mobile, you may show only thoese buttons that does not require text selection like format, left, center, right, ol, ul, etc.

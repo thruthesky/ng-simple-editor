@@ -1,9 +1,26 @@
 {
   "name": "ng-simple-editor",
-  "version": "0.0.6",
+  "version": "0.0.8",
+  "author": {
+    "name": "Angular Authors",
+    "email" : "thruthesky@gmail.com"
+  },
   "description": "This is a dead simple Angular wysiwyg editor. I made it because I cannot find any editor which has no depencies.",
-  "keywords" :["Angular","Editor","Wysiwyg"],
-  "license" : "GPL",
+  "keywords": [
+    "Angular",
+    "Ionic",
+    "Editor",
+    "Wysiwyg"
+  ],
+  "license": "GPL",
+  "homepage": "https://github.com/thruthesky/ng-simple-editor",
+  "bugs": {
+    "url": "https://github.com/thruthesky/ng-simple-editor/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thruthesky/ng-simple-editor"
+  },
   "peerDependencies": {
     "@angular/common": "^6.0.0-rc.0 || ^6.0.0",
     "@angular/core": "^6.0.0-rc.0 || ^6.0.0"
