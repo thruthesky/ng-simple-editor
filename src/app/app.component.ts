@@ -16,7 +16,7 @@ export class AppComponent implements AfterContentInit {
     this.editor.putContent(`<h1>Let's Edit!</h1>`);
   }
 
-  onChange(content: string) {
-    this.content = content;
+  onChange(event: Event) {
+    this.content = this.editor.content;
   }
 }

@@ -205,6 +205,7 @@ export class NgSimpleEditorComponent implements OnInit, OnChanges, AfterViewInit
 
   /**
    * When content changes, 'change' event with content will be fired.
+   * @desc This will fire with all the changes. Not only text changes but also HTML tag changes.
    */
   @Output() change = new EventEmitter();
   @Input() init = {
@@ -661,7 +662,11 @@ export class NgSimpleEditorComponent implements OnInit, OnChanges, AfterViewInit
     return ln;
   }
 
+  /**
+   * It fires with all the (input) event including HTML changes.
+   * @param event event
+   */
   onChange(event: Event) {
-    this.change.emit(this.content);
+      this.change.emit(event);
   }
 }

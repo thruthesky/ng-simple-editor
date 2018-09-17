@@ -96,8 +96,8 @@ content: {{ editor.content }}
 ````
 
 ```` typescript
-  onChange(content: string) {
-    this.content = content;
+  onChange(event: Event) {
+    this.content = this.editor.content;
   }
 ````
 
