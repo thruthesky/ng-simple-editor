@@ -87,6 +87,21 @@ content: {{ editor.content }}
 
 * Buttons on editor appears in the order of that they were given in [buttons] property.
 
+## Events
+
+### change event on content changes
+
+```` html
+<ng-simple-editor #editor (change)=" onChange( $event ) "></ng-simple-editor>
+````
+
+```` typescript
+  onChange(content: string) {
+    this.content = content;
+  }
+````
+
+
 ## Tips
 
 * On mobile, it is not easy selecting texts and apply HTML. So, in mobile, you may show only thoese buttons that does not require text selection like format, left, center, right, ol, ul, etc.

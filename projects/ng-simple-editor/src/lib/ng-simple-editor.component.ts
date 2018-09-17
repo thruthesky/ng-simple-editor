@@ -1,4 +1,9 @@
-import { Component, OnInit, ViewChild, ElementRef, Input, HostListener, OnChanges, AfterViewInit, ViewEncapsulation } from '@angular/core';
+import {
+  Component, OnInit, ViewChild, ElementRef, Input, HostListener, OnChanges, AfterViewInit, ViewEncapsulation,
+  Output,
+  EventEmitter
+} from '@angular/core';
+
 
 type COMMAND = 'bold' | 'italic' | 'underline' | 'fontsize' | 'forecolor' | 'backcolor'
   | 'highlight' | 'link' | 'unlink' | 'table' | 'fontname' | 'formatblock' | 'indent' | 'outdent'
@@ -140,7 +145,8 @@ type COMMAND = 'bold' | 'italic' | 'underline' | 'fontsize' | 'forecolor' | 'bac
     <ng-container *ngTemplateOutlet=" T "></ng-container>
     </ng-container>
   </div>
-  <div #editorContent class="content" [attr.size]=" contentSize " contenteditable="true">
+  <div #editorContent class="content" [attr.size]=" contentSize " contenteditable="true"
+    (input)=" onChange( $event ) ">
   </div>
 </div>
 
@@ -197,6 +203,10 @@ export class NgSimpleEditorComponent implements OnInit, OnChanges, AfterViewInit
   @ViewChild('tBigview') tBigview: ElementRef;
   @ViewChild('tSmallview') tSmallview: ElementRef;
 
+  /**
+   * When content changes, 'change' event with content will be fired.
+   */
+  @Output() change = new EventEmitter();
   @Input() init = {
     content: '',
     cursor: false
@@ -651,4 +661,7 @@ export class NgSimpleEditorComponent implements OnInit, OnChanges, AfterViewInit
     return ln;
   }
 
+  onChange(event: Event) {
+    this.change.emit(this.content);
+  }
 }

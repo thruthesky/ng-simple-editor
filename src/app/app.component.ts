@@ -8,10 +8,15 @@ import { NgSimpleEditorComponent } from 'projects/ng-simple-editor/src/public_ap
 })
 export class AppComponent implements AfterContentInit {
   title = 'ng-simple-editor-app';
+  content;
 
   @ViewChild('editor') editor: NgSimpleEditorComponent;
 
   ngAfterContentInit() {
     this.editor.putContent(`<h1>Let's Edit!</h1>`);
+  }
+
+  onChange(content: string) {
+    this.content = content;
   }
 }

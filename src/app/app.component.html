@@ -1,7 +1,10 @@
 <h1>Editor</h1>
 
-<ng-simple-editor #editor></ng-simple-editor>
-content: {{ editor.content }}
+<ng-simple-editor #editor (change)=" onChange( $event ) "></ng-simple-editor>
+HTML content: {{ editor.content }}
+
+<div>Event HTML: {{ content }}</div>
+
 
 <hr>
 
@@ -9,5 +12,6 @@ content: {{ editor.content }}
 [buttons]="['bold', 'italic', 'underline', 'fontsize', 'forecolor', 'backcolor', 'highlight', 'link', 'unink', 'table', 'formatblock', 'insertline', 'insertimage', 'orderedlist', 'unorderedlist', 'left', 'center', 'removeformat', 'strike', 'big', 'normal']"
 ></ng-simple-editor>
 content: {{ editor2.content }}
+
 
 
