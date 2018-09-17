@@ -5,12 +5,6 @@
 * I search Angular/Ionic Web editors and I couldn't find simple one. All of them have dependencies like jQury, Bootstrap, Fontawesome, etc.
 * So I made one for myself. It's deadly simple. Easy to edit. No dependencies at all.
 
-## Todo
-
-* More design
-* More documentation
-* Better coding style
-
 ## How to Install
 
 ```` sh
@@ -91,8 +85,16 @@ content: {{ editor.content }}
 
 ## Buttons
 
-* Buttons on editor appears in the order as they were given by [buttons] @Input() property.
+* Buttons on editor appears in the order of that they were given in [buttons] property.
 
 ## Tips
 
 * On mobile, it is not easy selecting texts and apply HTML. So, in mobile, you may show only thoese buttons that does not require text selection like format, left, center, right, ol, ul, etc.
+
+## Todo
+
+* [Git issues](https://github.com/thruthesky/ng-simple-editor/issues)
+
+## Bug report
+
+* [Git issues](https://github.com/thruthesky/ng-simple-editor/issues)
