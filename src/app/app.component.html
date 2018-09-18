@@ -2,16 +2,46 @@
 
 <ng-simple-editor #editor (change)=" onChange( $event ) "></ng-simple-editor>
 HTML content: {{ editor.content }}
+<h1>Another Editor</h1>
 
-<div>Event HTML: {{ content }}</div>
-
-
-<hr>
-
-<ng-simple-editor #editor2
-[buttons]="['bold', 'italic', 'underline', 'fontsize', 'forecolor', 'backcolor', 'highlight', 'link', 'unink', 'table', 'formatblock', 'insertline', 'insertimage', 'orderedlist', 'unorderedlist', 'left', 'center', 'removeformat', 'strike', 'big', 'normal']"
-></ng-simple-editor>
-content: {{ editor2.content }}
+<ng-simple-editor #editor2 [buttons]="['bold', 'italic', 'underline', 'fontsize', 'forecolor', 'backcolor', 'highlight', 'link', 'unink', 'table', 'formatblock', 'insertline', 'insertimage', 'orderedlist', 'unorderedlist', 'left', 'center', 'removeformat', 'strike', 'big', 'normal']"></ng-simple-editor>
+HTML content: {{ editor2.content }}
 
 
+
+<h1>And another editor</h1>
+
+<ng-simple-editor #editor3 [init]="{ cursor: true }" [buttons]="[
+{ button: 'bold', text: '굵게'},
+{ button: 'italic', text: '이태릭체' },
+{ button: 'strike', text: '가운데줄' },
+{ button: 'fontsize', text: '글자크기' },
+{ button: 'forecolor', text: '글자색' },
+{ button: 'backcolor', text: '배경색' },
+{ button: 'highlight', text: '강조표시' },
+{ button: 'link', text: '링크' },
+{ button: 'unlink', text: '링크해제' },
+{ button: 'table', text: '테이블' },
+{ button: 'fontname', text: '글자체' },
+{ button: 'format', text: '포멧(헤더)' },
+{ button: 'indent', text: '들여쓰기' },
+{ button: 'outdent', text: '내어쓰기' },
+{ button: 'image', text: '사진' },
+{ button: 'orderedlist', text: '목록(점)' },
+{ button: 'unorderedlist', text: '목록(번호)' },
+{ button: 'left', text: '왼쪽' },
+{ button: 'center', text: '중간' },
+{ button: 'right', text: '오른쪽' },
+{ button: 'removeformat', text: '양식제거' },
+{ button: 'big', text: '크게' },
+{ button: 'normal', text: '작게' },
+{ button: 'insertline', text: '라인분리' }
+]"></ng-simple-editor>
+HTML content: {{ editor3.content }}
+
+
+<h1>Editor with icon</h1>
+
+<ng-simple-editor #editor4 [init]="{ cursor: true }" [icons]="true"></ng-simple-editor>
+HTML content: {{ editor4.content }}
 

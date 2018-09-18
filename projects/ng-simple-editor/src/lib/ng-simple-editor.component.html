@@ -1,0 +1,314 @@
+<ng-template #tBold>
+
+  <button type="button" (click)="bold( $event )">
+    <svg *ngIf="icons" aria-hidden="true" data-prefix="fas" data-icon="bold" role="img" xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 384 512" class="svg-inline--fa fa-bold fa-w-12 fa-9x">
+      <path fill="currentColor" d="M304.793 243.891c33.639-18.537 53.657-54.16 53.657-95.693 0-48.236-26.25-87.626-68.626-104.179C265.138 34.01 240.849 32 209.661 32H24c-8.837 0-16 7.163-16 16v33.049c0 8.837 7.163 16 16 16h33.113v318.53H24c-8.837 0-16 7.163-16 16V464c0 8.837 7.163 16 16 16h195.69c24.203 0 44.834-1.289 66.866-7.584C337.52 457.193 376 410.647 376 350.014c0-52.168-26.573-91.684-71.207-106.123zM142.217 100.809h67.444c16.294 0 27.536 2.019 37.525 6.717 15.828 8.479 24.906 26.502 24.906 49.446 0 35.029-20.32 56.79-53.029 56.79h-76.846V100.809zm112.642 305.475c-10.14 4.056-22.677 4.907-31.409 4.907h-81.233V281.943h84.367c39.645 0 63.057 25.38 63.057 63.057.001 28.425-13.66 52.483-34.782 61.284z"
+        class=""></path>
+    </svg>
+    <ng-container *ngIf=" !icons ">{{ t.bold }}</ng-container>
+  </button>
+
+</ng-template>
+<ng-template #tItalic>
+  <button type="button" (click)="italic( $event )">
+    <svg *ngIf="icons" aria-hidden="true" data-prefix="fas" data-icon="italic" role="img" xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 320 512" class="svg-inline--fa fa-italic fa-w-10 fa-9x">
+      <path fill="currentColor" d="M204.758 416h-33.849l62.092-320h40.725a16 16 0 0 0 15.704-12.937l6.242-32C297.599 41.184 290.034 32 279.968 32H120.235a16 16 0 0 0-15.704 12.937l-6.242 32C96.362 86.816 103.927 96 113.993 96h33.846l-62.09 320H46.278a16 16 0 0 0-15.704 12.935l-6.245 32C22.402 470.815 29.967 480 40.034 480h158.479a16 16 0 0 0 15.704-12.935l6.245-32c1.927-9.88-5.638-19.065-15.704-19.065z"
+        class=""></path>
+    </svg>
+    <ng-container *ngIf=" !icons ">{{ t.italic }}</ng-container>
+  </button>
+</ng-template>
+<ng-template #tUnderline>
+  <button type="button" (click)="underline( $event )">
+    <svg *ngIf="icons" aria-hidden="true" data-prefix="fas" data-icon="underline" role="img" xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 448 512" class="svg-inline--fa fa-underline fa-w-14 fa-9x">
+      <path fill="currentColor" d="M224.264 388.24c-91.669 0-156.603-51.165-156.603-151.392V64H39.37c-8.837 0-16-7.163-16-16V16c0-8.837 7.163-16 16-16h137.39c8.837 0 16 7.163 16 16v32c0 8.837-7.163 16-16 16h-28.813v172.848c0 53.699 28.314 79.444 76.317 79.444 46.966 0 75.796-25.434 75.796-79.965V64h-28.291c-8.837 0-16-7.163-16-16V16c0-8.837 7.163-16 16-16h136.868c8.837 0 16 7.163 16 16v32c0 8.837-7.163 16-16 16h-28.291v172.848c0 99.405-64.881 151.392-156.082 151.392zM16 448h416c8.837 0 16 7.163 16 16v32c0 8.837-7.163 16-16 16H16c-8.837 0-16-7.163-16-16v-32c0-8.837 7.163-16 16-16z"
+        class=""></path>
+    </svg>
+    <ng-container *ngIf="!icons">{{ t.underline }}</ng-container>
+
+  </button></ng-template>
+<ng-template #tStrike><button type="button" (click)="strikeThrough( $event )">
+    <svg *ngIf="icons" aria-hidden="true" data-prefix="fas" data-icon="strikethrough" role="img" xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 512 512" class="svg-inline--fa fa-strikethrough fa-w-16 fa-9x">
+      <path fill="currentColor" d="M496 288H16c-8.837 0-16-7.163-16-16v-32c0-8.837 7.163-16 16-16h480c8.837 0 16 7.163 16 16v32c0 8.837-7.163 16-16 16zm-214.666 16c27.258 12.937 46.524 28.683 46.524 56.243 0 33.108-28.977 53.676-75.621 53.676-32.325 0-76.874-12.08-76.874-44.271V368c0-8.837-7.164-16-16-16H113.75c-8.836 0-16 7.163-16 16v19.204c0 66.845 77.717 101.82 154.487 101.82 88.578 0 162.013-45.438 162.013-134.424 0-19.815-3.618-36.417-10.143-50.6H281.334zm-30.952-96c-32.422-13.505-56.836-28.946-56.836-59.683 0-33.92 30.901-47.406 64.962-47.406 42.647 0 64.962 16.593 64.962 32.985V136c0 8.837 7.164 16 16 16h45.613c8.836 0 16-7.163 16-16v-30.318c0-52.438-71.725-79.875-142.575-79.875-85.203 0-150.726 40.972-150.726 125.646 0 22.71 4.665 41.176 12.777 56.547h129.823z"
+        class=""></path>
+    </svg>
+    <ng-container *ngIf="!icons">{{ t.strike }}</ng-container>
+  </button></ng-template>
+<ng-template #tFontsize>
+  <span [class.select-box-wrapper]=" icons ">
+    <svg *ngIf="icons" aria-hidden="true" data-prefix="fas" data-icon="text-height" role="img" xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 576 512" class="svg-inline--fa fa-text-height fa-w-18 fa-9x">
+      <path fill="currentColor" d="M16 32h288c8.837 0 16 7.163 16 16v96c0 8.837-7.163 16-16 16h-35.496c-8.837 0-16-7.163-16-16V96h-54.761v320H232c8.837 0 16 7.163 16 16v32c0 8.837-7.163 16-16 16H88c-8.837 0-16-7.163-16-16v-32c0-8.837 7.163-16 16-16h34.257V96H67.496v48c0 8.837-7.163 16-16 16H16c-8.837 0-16-7.163-16-16V48c0-8.837 7.163-16 16-16zm475.308 4.685l79.995 80.001C581.309 126.693 574.297 144 559.99 144H512v224h48c15.639 0 20.635 17.991 11.313 27.314l-79.995 80.001c-6.247 6.247-16.381 6.245-22.626 0l-79.995-80.001C378.691 385.307 385.703 368 400.01 368H448V144h-48c-15.639 0-20.635-17.991-11.313-27.314l79.995-80.001c6.247-6.248 16.381-6.245 22.626 0z"
+        class=""></path>
+    </svg>
+    <select (change)="fontSize( $event )">
+      <option value='0'>{{ t.fontsize }}</option>
+      <option value='1'>1</option>
+      <option value='2'>2</option>
+      <option value='3'>3</option>
+      <option value='4'>4</option>
+      <option value='5'>5</option>
+      <option value='6'>6</option>
+      <option value='7'>7</option>
+    </select>
+  </span>
+</ng-template>
+<ng-template #tForecolor>
+  <span [class.select-box-wrapper]=" icons ">
+    <svg *ngIf="icons" aria-hidden="true" data-prefix="fas" data-icon="palette" role="img" xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 512 512" class="svg-inline--fa fa-palette fa-w-16 fa-9x">
+      <path fill="currentColor" d="M204.3 5C104.9 24.4 24.8 104.3 5.2 203.4c-37 187 131.7 326.4 258.8 306.7 41.2-6.4 61.4-54.6 42.5-91.7-23.1-45.4 9.9-98.4 60.9-98.4h79.7c35.8 0 64.8-29.6 64.9-65.3C511.5 97.1 368.1-26.9 204.3 5zM96 320c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32zm32-128c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32zm128-64c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32zm128 64c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32z"
+        class=""></path>
+    </svg>
+    <select (change)="forecolor( $event )">
+      <option value=''>{{ t.forecolor }}</option>
+      <option value='black'>Black</option>
+      <option value='blue'>Blue</option>
+      <option value='blueviolet'>BlueViolet</option>
+      <option value='brown'>Brown</option>
+      <option value='gold'>Gold</option>
+      <option value='green'>Green</option>
+      <option value='grey'>Grey</option>
+      <option value='navy'>Navy</option>
+      <option value='red'>Red</option>
+      <option value='tomato'>Tomato</option>
+      <option value='yellow'>Yellow</option>
+    </select>
+  </span>
+</ng-template>
+<ng-template #tBackcolor>
+  <span [class.select-box-wrapper]=" icons ">
+    <svg *ngIf="icons" aria-hidden="true" data-prefix="fas" data-icon="fill-drip" role="img" xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 576 512" class="svg-inline--fa fa-fill-drip fa-w-18 fa-9x">
+      <path fill="currentColor" d="M512 320s-64 92.65-64 128c0 35.35 28.66 64 64 64s64-28.65 64-64-64-128-64-128zm-9.37-102.94L294.94 9.37C288.69 3.12 280.5 0 272.31 0s-16.38 3.12-22.62 9.37l-81.58 81.58L81.93 4.76c-6.25-6.25-16.38-6.25-22.62 0L36.69 27.38c-6.24 6.25-6.24 16.38 0 22.62l86.19 86.18-94.76 94.76c-37.49 37.48-37.49 98.26 0 135.75l117.19 117.19c18.74 18.74 43.31 28.12 67.87 28.12 24.57 0 49.13-9.37 67.87-28.12l221.57-221.57c12.5-12.5 12.5-32.75.01-45.25zm-116.22 70.97H65.93c1.36-3.84 3.57-7.98 7.43-11.83l13.15-13.15 81.61-81.61 58.6 58.6c12.49 12.49 32.75 12.49 45.24 0s12.49-32.75 0-45.24l-58.6-58.6 58.95-58.95 162.44 162.44-48.34 48.34z"
+        class=""></path>
+    </svg>
+    <select (change)="backcolor( $event )">
+      <option value=''>{{ t.backcolor }}</option>
+      <option value='black'>Black</option>
+      <option value='blue'>Blue</option>
+      <option value='blueviolet'>BlueViolet</option>
+      <option value='brown'>Brown</option>
+      <option value='darkblue'>DarkBlue</option>
+      <option value='gold'>Gold</option>
+      <option value='green'>Green</option>
+      <option value='grey'>Grey</option>
+      <option value='navy'>Navy</option>
+      <option value='red'>Red</option>
+      <option value='tomato'>Tomato</option>
+      <option value='yellow'>Yellow</option>
+    </select>
+  </span>
+
+</ng-template>
+<ng-template #tHighlight>
+  <span [class.select-box-wrapper]=" icons ">
+    <svg *ngIf="icons" aria-hidden="true" data-prefix="fas" data-icon="highlighter" role="img" xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 544 512" class="svg-inline--fa fa-highlighter fa-w-17 fa-9x">
+      <path fill="currentColor" d="M0 479.98L99.92 512l35.45-35.45-67.04-67.04L0 479.98zm124.61-240.01a36.592 36.592 0 0 0-10.79 38.1l13.05 42.83-50.93 50.94 96.23 96.23 50.86-50.86 42.74 13.08c13.73 4.2 28.65-.01 38.15-10.78l35.55-41.64-173.34-173.34-41.52 35.44zm403.31-160.7l-63.2-63.2c-20.49-20.49-53.38-21.52-75.12-2.35L190.55 183.68l169.77 169.78L530.27 154.4c19.18-21.74 18.15-54.63-2.35-75.13z"
+        class=""></path>
+    </svg>
+    <select (change)="highlight( $event )">
+      <option value=''>{{ t.highlight }}</option>
+      <option value='black,white'>Black and White</option>
+      <option value='blue,white'>Blue and White</option>
+      <option value='green,white'>Green and White</option>
+      <option value='red,white'>Red and White</option>
+      <option value='gold,white'>Yellow and White</option>
+    </select>
+  </span>
+</ng-template>
+<ng-template #tLink><button type="button" (click)="link( $event )">
+    <svg *ngIf=" icons " aria-hidden="true" data-prefix="fas" data-icon="link" role="img" xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 512 512" class="svg-inline--fa fa-link fa-w-16 fa-9x">
+      <path fill="currentColor" d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"
+        class=""></path>
+    </svg>
+    <ng-container *ngIf=" !icons ">{{ t.link }}</ng-container>
+  </button></ng-template>
+<ng-template #tUnlink><button type="button" (click)="unlink( $event )">
+    <svg *ngIf=" icons " aria-hidden="true" data-prefix="fas" data-icon="unlink" role="img" xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 512 512" class="svg-inline--fa fa-unlink fa-w-16 fa-9x">
+      <path fill="currentColor" d="M304.083 405.907c4.686 4.686 4.686 12.284 0 16.971l-44.674 44.674c-59.263 59.262-155.693 59.266-214.961 0-59.264-59.265-59.264-155.696 0-214.96l44.675-44.675c4.686-4.686 12.284-4.686 16.971 0l39.598 39.598c4.686 4.686 4.686 12.284 0 16.971l-44.675 44.674c-28.072 28.073-28.072 73.75 0 101.823 28.072 28.072 73.75 28.073 101.824 0l44.674-44.674c4.686-4.686 12.284-4.686 16.971 0l39.597 39.598zm-56.568-260.216c4.686 4.686 12.284 4.686 16.971 0l44.674-44.674c28.072-28.075 73.75-28.073 101.824 0 28.072 28.073 28.072 73.75 0 101.823l-44.675 44.674c-4.686 4.686-4.686 12.284 0 16.971l39.598 39.598c4.686 4.686 12.284 4.686 16.971 0l44.675-44.675c59.265-59.265 59.265-155.695 0-214.96-59.266-59.264-155.695-59.264-214.961 0l-44.674 44.674c-4.686 4.686-4.686 12.284 0 16.971l39.597 39.598zm234.828 359.28l22.627-22.627c9.373-9.373 9.373-24.569 0-33.941L63.598 7.029c-9.373-9.373-24.569-9.373-33.941 0L7.029 29.657c-9.373 9.373-9.373 24.569 0 33.941l441.373 441.373c9.373 9.372 24.569 9.372 33.941 0z"
+        class=""></path>
+    </svg>
+    <ng-container *ngIf=" !icons ">{{ t.unlink }}</ng-container>
+  </button></ng-template>
+<ng-template #tTable>
+  <span [class.select-box-wrapper]=" icons ">
+    <svg *ngIf=" icons " aria-hidden="true" data-prefix="fas" data-icon="table" role="img" xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 512 512" class="svg-inline--fa fa-table fa-w-16 fa-9x">
+      <path fill="currentColor" d="M464 32H48C21.49 32 0 53.49 0 80v352c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V80c0-26.51-21.49-48-48-48zM224 416H64v-96h160v96zm0-160H64v-96h160v96zm224 160H288v-96h160v96zm0-160H288v-96h160v96z"
+        class=""></path>
+    </svg>
+    <select (change)="table( $event )">
+      <option value=''>{{ t.table }}</option>
+      <option value='1x2'>1x2</option>
+      <option value='1x3'>1x3</option>
+      <option value='1x4'>1x4</option>
+      <option value='1x5'>1x5</option>
+      <option value='2x2'>2x2</option>
+      <option value='2x3'>2x3</option>
+      <option value='2x4'>2x4</option>
+      <option value='2x5'>2x5</option>
+      <option value='3x2'>3x2</option>
+      <option value='3x3'>3x3</option>
+      <option value='3x4'>3x4</option>
+      <option value='3x5'>3x5</option>
+      <option value='4x2'>4x2</option>
+      <option value='4x3'>4x3</option>
+      <option value='4x4'>4x4</option>
+      <option value='4x5'>4x5</option>
+      <option value='5x2'>5x2</option>
+      <option value='5x3'>5x3</option>
+      <option value='5x4'>5x4</option>
+      <option value='5x5'>5x5</option>
+    </select>
+  </span>
+</ng-template>
+<ng-template #tFontname>
+  <span [class.select-box-wrapper]=" icons ">
+    <svg *ngIf="icons" aria-hidden="true" data-prefix="fas" data-icon="font" role="img" xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 448 512" class="svg-inline--fa fa-font fa-w-14 fa-9x">
+      <path fill="currentColor" d="M152 416h-24.013l26.586-80.782H292.8L319.386 416H296c-8.837 0-16 7.163-16 16v32c0 8.837 7.163 16 16 16h136c8.837 0 16-7.163 16-16v-32c0-8.837-7.163-16-16-16h-26.739L275.495 42.746A16 16 0 0 0 260.382 32h-72.766a16 16 0 0 0-15.113 10.746L42.739 416H16c-8.837 0-16 7.163-16 16v32c0 8.837 7.163 16 16 16h136c8.837 0 16-7.163 16-16v-32c0-8.837-7.163-16-16-16zm64.353-271.778c4.348-15.216 6.61-28.156 7.586-34.644.839 6.521 2.939 19.476 7.727 34.706l41.335 124.006h-98.619l41.971-124.068z"
+        class=""></path>
+    </svg>
+    <select (change)="fontName( $event )">
+      <option value=''>{{ t.fontname }}</option>
+      <option value='Arial'>Arial</option>
+      <option value='Arial Black'>Arial Black</option>
+      <option value='Comic Sans MS'>Comic Sans MS</option>
+      <option value='Courier New'>Courier New</option>
+      <option value='Georgia'>Georgia</option>
+      <option value='Helvetica'>Helvetica</option>
+      <option value='Impact'>Impact</option>
+      <option value='Times New Roman'>Times New Roman</option>
+      <option value='Verdana'>Verdana</option>
+      <option value='맑은 고딕,Malgun Gothic,AppleGothic'>맑은 고딕</option>
+    </select>
+  </span>
+</ng-template>
+<ng-template #tFormatblock>
+  <span [class.select-box-wrapper]=" icons ">
+    <svg *ngIf=" icons " aria-hidden="true" data-prefix="fas" data-icon="h1" role="img" xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 640 512" class="svg-inline--fa fa-h1 fa-w-20 fa-9x">
+      <path fill="currentColor" d="M167.675 374.034V400c0 8.837-7.163 16-16 16H38.365c-8.837 0-16-7.163-16-16v-25.966c0-8.837 7.163-16 16-16h20.394v-203.64H38.365c-8.837 0-16-7.163-16-16V112c0-8.837 7.163-16 16-16h113.31c8.837 0 16 7.163 16 16v26.394c0 8.837-7.163 16-16 16h-20.822v71.767h122.29v-71.767h-20.822c-8.837 0-16-7.163-16-16V112c0-8.837 7.163-16 16-16h113.31c8.837 0 16 7.163 16 16v26.394c0 8.837-7.163 16-16 16h-20.393v203.64h20.393c8.837 0 16 7.163 16 16V400c0 8.837-7.163 16-16 16h-113.31c-8.837 0-16-7.163-16-16v-25.966c0-8.837 7.163-16 16-16h20.822v-70.91h-122.29v70.91h20.822c8.837 0 16 7.164 16 16zM534.062 96h-37.166a16.001 16.001 0 0 0-11.085 4.462l-68.156 65.476c-6.347 6.098-6.578 16.177-.515 22.558l21.562 22.698c6.08 6.4 16.195 6.667 22.604.595l18.608-17.629.155-.151.038-.039v158.497H430.17c-8.837 0-16 7.163-16 16V400c0 8.837 7.163 16 16 16H600c8.837 0 16-7.163 16-16v-31.532c0-8.837-7.163-16-16-16h-49.938V112c0-8.837-7.163-16-16-16z"
+        class=""></path>
+    </svg>
+    <select (change)="formatBlock( $event )">
+      <option value=''>{{ t.format }}</option>
+      <option value='H1'>H1</option>
+      <option value='H2'>H2</option>
+      <option value='H3'>H3</option>
+      <option value='H4'>H4</option>
+      <option value='H5'>H5</option>
+      <option value='H6'>H6</option>
+      <option value='P'>Paragraph</option>
+    </select>
+  </span>
+</ng-template>
+<ng-template #tIndent><button type="button" (click)="indent( $event )">
+    <svg *ngIf=" icons " aria-hidden="true" data-prefix="fas" data-icon="indent" role="img" xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 448 512" class="svg-inline--fa fa-indent fa-w-14 fa-9x">
+      <path fill="currentColor" d="M0 84V44c0-8.837 7.163-16 16-16h416c8.837 0 16 7.163 16 16v40c0 8.837-7.163 16-16 16H16c-8.837 0-16-7.163-16-16zm176 144h256c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H176c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zM16 484h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm160-128h256c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H176c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm-52.687-111.313l-96-95.984C17.266 138.652 0 145.776 0 160.016v191.975c0 14.329 17.325 21.304 27.313 11.313l96-95.992c6.249-6.247 6.249-16.377 0-22.625z"
+        class=""></path>
+    </svg>
+    <ng-container *ngIf=" !icons ">{{ t.indent }}</ng-container>
+  </button></ng-template>
+<ng-template #tOutdent><button type="button" (click)="outdent( $event )">
+    <svg *ngIf=" icons " aria-hidden="true" data-prefix="fas" data-icon="outdent" role="img" xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 448 512" class="svg-inline--fa fa-outdent fa-w-14 fa-9x">
+      <path fill="currentColor" d="M0 84V44c0-8.837 7.163-16 16-16h416c8.837 0 16 7.163 16 16v40c0 8.837-7.163 16-16 16H16c-8.837 0-16-7.163-16-16zm208 144h224c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H208c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zM16 484h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm192-128h224c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H208c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zM4.687 267.313l96 95.984C110.734 373.348 128 366.224 128 351.984V160.008c0-14.329-17.325-21.304-27.313-11.313l-96 95.992c-6.249 6.248-6.249 16.378 0 22.626z"
+        class=""></path>
+    </svg>
+    <ng-container *ngIf=" !icons ">{{ t.outdent }}</ng-container>
+  </button></ng-template>
+<ng-template #tInsertline><button type="button" (click)="insertHorizontalRule( $event )">
+
+
+    <svg *ngIf=" icons " aria-hidden="true" data-prefix="far" data-icon="minus" role="img" xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 384 512" class="svg-inline--fa fa-minus fa-w-12 fa-9x">
+      <path fill="currentColor" d="M368 224H16c-8.84 0-16 7.16-16 16v32c0 8.84 7.16 16 16 16h352c8.84 0 16-7.16 16-16v-32c0-8.84-7.16-16-16-16z"
+        class=""></path>
+    </svg>
+
+    <ng-container *ngIf=" !icons ">{{ t.insertline }}</ng-container>
+  </button></ng-template>
+<ng-template #tImage><button type="button" (click)="insertImage()">
+    <svg *ngIf=" icons " aria-hidden="true" data-prefix="far" data-icon="image" role="img" xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 512 512" class="svg-inline--fa fa-image fa-w-16 fa-9x">
+      <path fill="currentColor" d="M464 64H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm-6 336H54a6 6 0 0 1-6-6V118a6 6 0 0 1 6-6h404a6 6 0 0 1 6 6v276a6 6 0 0 1-6 6zM128 152c-22.091 0-40 17.909-40 40s17.909 40 40 40 40-17.909 40-40-17.909-40-40-40zM96 352h320v-80l-87.515-87.515c-4.686-4.686-12.284-4.686-16.971 0L192 304l-39.515-39.515c-4.686-4.686-12.284-4.686-16.971 0L96 304v48z"
+        class=""></path>
+    </svg>
+    <ng-container *ngIf=" !icons ">{{ t.image }}</ng-container>
+  </button></ng-template>
+<ng-template #tOrderedlist><button type="button" (click)="insertOrderedList( $event )">
+    <svg *ngIf=" icons " aria-hidden="true" data-prefix="fas" data-icon="list-ol" role="img" xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 512 512" class="svg-inline--fa fa-list-ol fa-w-16 fa-9x">
+      <path fill="currentColor" d="M3.263 139.527c0-7.477 3.917-11.572 11.573-11.572h15.131V88.078c0-5.163.534-10.503.534-10.503h-.356s-1.779 2.67-2.848 3.738c-4.451 4.273-10.504 4.451-15.666-1.068l-5.518-6.231c-5.342-5.341-4.984-11.216.534-16.379l21.72-19.938C32.815 33.602 36.732 32 42.785 32H54.89c7.656 0 11.749 3.916 11.749 11.572v84.384h15.488c7.655 0 11.572 4.094 11.572 11.572v8.901c0 7.477-3.917 11.572-11.572 11.572H14.836c-7.656 0-11.573-4.095-11.573-11.572v-8.902zM2.211 304.591c0-47.278 50.955-56.383 50.955-69.165 0-7.18-5.954-8.755-9.28-8.755-3.153 0-6.479 1.051-9.455 3.852-5.079 4.903-10.507 7.004-16.111 2.451l-8.579-6.829c-5.779-4.553-7.18-9.805-2.803-15.409C13.592 201.981 26.025 192 47.387 192c19.437 0 44.476 10.506 44.476 39.573 0 38.347-46.753 46.402-48.679 56.909h39.049c7.529 0 11.557 4.027 11.557 11.382v8.755c0 7.354-4.028 11.382-11.557 11.382h-67.94c-7.005 0-12.083-4.028-12.083-11.382v-4.028zM5.654 454.61l5.603-9.28c3.853-6.654 9.105-7.004 15.584-3.152 4.903 2.101 9.63 3.152 14.359 3.152 10.155 0 14.358-3.502 14.358-8.23 0-6.654-5.604-9.106-15.934-9.106h-4.728c-5.954 0-9.28-2.101-12.258-7.88l-1.05-1.926c-2.451-4.728-1.226-9.806 2.801-14.884l5.604-7.004c6.829-8.405 12.257-13.483 12.257-13.483v-.35s-4.203 1.051-12.608 1.051H16.685c-7.53 0-11.383-4.028-11.383-11.382v-8.755c0-7.53 3.853-11.382 11.383-11.382h58.484c7.529 0 11.382 4.027 11.382 11.382v3.327c0 5.778-1.401 9.806-5.079 14.183l-17.509 20.137c19.611 5.078 28.716 20.487 28.716 34.845 0 21.363-14.358 44.126-48.503 44.126-16.636 0-28.192-4.728-35.896-9.455-5.779-4.202-6.304-9.805-2.626-15.934zM144 132h352c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H144c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h352c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H144c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h352c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H144c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"
+        class=""></path>
+    </svg>
+    <ng-container *ngIf=" !icons ">{{ t.orderedlist }}</ng-container>
+  </button></ng-template>
+<ng-template #tUnorderedlist><button type="button" (click)="insertUnorderedList( $event )">
+    <svg *ngIf=" icons " aria-hidden="true" data-prefix="fas" data-icon="list-ul" role="img" xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 512 512" class="svg-inline--fa fa-list-ul fa-w-16 fa-9x">
+      <path fill="currentColor" d="M96 96c0 26.51-21.49 48-48 48S0 122.51 0 96s21.49-48 48-48 48 21.49 48 48zM48 208c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48zm0 160c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48zm96-236h352c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H144c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h352c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H144c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h352c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H144c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"
+        class=""></path>
+    </svg>
+    <ng-container *ngIf=" !icons ">{{ t.unorderedlist }}</ng-container>
+  </button></ng-template>
+<ng-template #tLeft><button type="button" (click)="justifyLeft( $event )">
+    <svg *ngIf=" icons " aria-hidden="true" data-prefix="fas" data-icon="align-left" role="img" xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 448 512" class="svg-inline--fa fa-align-left fa-w-14 fa-9x">
+      <path fill="currentColor" d="M288 44v40c0 8.837-7.163 16-16 16H16c-8.837 0-16-7.163-16-16V44c0-8.837 7.163-16 16-16h256c8.837 0 16 7.163 16 16zM0 172v40c0 8.837 7.163 16 16 16h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16zm16 312h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm256-200H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16h256c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16z"
+        class=""></path>
+    </svg>
+    <ng-container *ngIf=" !icons ">{{ t.left }}</ng-container>
+  </button></ng-template>
+<ng-template #tCenter><button type="button" (click)="justifyCenter( $event )">
+    <svg *ngIf=" icons " aria-hidden="true" data-prefix="fas" data-icon="align-center" role="img" xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 448 512" class="svg-inline--fa fa-align-center fa-w-14 fa-9x">
+      <path fill="currentColor" d="M352 44v40c0 8.837-7.163 16-16 16H112c-8.837 0-16-7.163-16-16V44c0-8.837 7.163-16 16-16h224c8.837 0 16 7.163 16 16zM16 228h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 256h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm320-200H112c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16h224c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16z"
+        class=""></path>
+    </svg>
+    <ng-container *ngIf=" !icons ">{{ t.center }}</ng-container>
+  </button></ng-template>
+<ng-template #tRight><button type="button" (click)="justifyRight( $event )">
+    <svg *ngIf=" icons " aria-hidden="true" data-prefix="fas" data-icon="align-right" role="img" xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 448 512" class="svg-inline--fa fa-align-right fa-w-14 fa-9x">
+      <path fill="currentColor" d="M160 84V44c0-8.837 7.163-16 16-16h256c8.837 0 16 7.163 16 16v40c0 8.837-7.163 16-16 16H176c-8.837 0-16-7.163-16-16zM16 228h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 256h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm160-128h256c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H176c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"
+        class=""></path>
+    </svg>
+    <ng-container *ngIf=" !icons ">{{ t.right }}</ng-container>
+  </button></ng-template>
+<ng-template #tRemoveFormat><button type="button" (click)="removeFormat( $event )">
+    <svg *ngIf=" icons " aria-hidden="true" data-prefix="fas" data-icon="signal-slash" role="img" xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 640 512" class="svg-inline--fa fa-signal-slash fa-w-20 fa-9x">
+      <path fill="currentColor" d="M633.82 458.1L616 444.33V16c0-8.84-7.16-16-16-16h-48c-8.84 0-16 7.16-16 16v366.5l-48-37.1V112c0-8.84-7.16-16-16-16h-48c-8.84 0-16 7.16-16 16v171.57l-48-37.1V208c0-8.84-7.16-16-16-16h-48c-1.82 0-3.5.48-5.13 1.04L45.47 3.37C38.49-2.05 28.43-.8 23.01 6.18L3.37 31.45C-2.05 38.42-.8 48.47 6.18 53.9l588.36 454.73c1.22.95 2.04 2.18 2.9 3.37H600c.73 0 1.35-.32 2.06-.42 5.51.8 11.27-1.05 14.93-5.77l19.64-25.27c5.43-6.96 4.17-17.01-2.81-22.44zM88 384H40c-8.84 0-16 7.16-16 16v96c0 8.84 7.16 16 16 16h48c8.84 0 16-7.16 16-16v-96c0-8.84-7.16-16-16-16zm80-96c-8.84 0-16 7.16-16 16v192c0 8.84 7.16 16 16 16h48c8.84 0 16-7.16 16-16V309.32L204.41 288H168zm112 208c0 8.84 7.16 16 16 16h48c8.84 0 16-7.16 16-16v-87.75l-80-61.83V496zm128 0c0 8.84 7.16 16 16 16h48c5.49 0 10.1-2.94 12.98-7.15L408 445.35V496z"
+        class=""></path>
+    </svg>
+    <ng-container *ngIf=" !icons ">{{ t.removeformat }}</ng-container>
+  </button></ng-template>
+<ng-template #tBigview><button type="button" (click)="bigContentSize( $event )">
+    <svg *ngIf=" icons " aria-hidden="true" data-prefix="fas" data-icon="plus-square" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="svg-inline--fa fa-plus-square fa-w-14 fa-9x"><path fill="currentColor" d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm-32 252c0 6.6-5.4 12-12 12h-92v92c0 6.6-5.4 12-12 12h-56c-6.6 0-12-5.4-12-12v-92H92c-6.6 0-12-5.4-12-12v-56c0-6.6 5.4-12 12-12h92v-92c0-6.6 5.4-12 12-12h56c6.6 0 12 5.4 12 12v92h92c6.6 0 12 5.4 12 12v56z" class=""></path></svg>
+    <ng-container *ngIf=" !icons ">{{ t.bigView }}</ng-container>
+  </button></ng-template>
+<ng-template #tSmallview><button type="button" (click)="originalContentSize( $event )">
+    <svg *ngIf=" icons " aria-hidden="true" data-prefix="fas" data-icon="minus-square" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="svg-inline--fa fa-minus-square fa-w-14 fa-9x"><path fill="currentColor" d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zM92 296c-6.6 0-12-5.4-12-12v-56c0-6.6 5.4-12 12-12h264c6.6 0 12 5.4 12 12v56c0 6.6-5.4 12-12 12H92z" class=""></path></svg>
+    <ng-container *ngIf=" !icons ">{{ t.smallView }}</ng-container>
+  </button></ng-template>
+
+<div class="editor">
+  <div class="buttons" [class.icon]=" icons ">
+    <ng-container *ngFor="let T of containerButtons">
+      <ng-container *ngTemplateOutlet=" T "></ng-container>
+    </ng-container>
+  </div>
+  <div #editorContent class="content" [attr.size]=" contentSize " contenteditable="true" (input)=" onChange( $event ) ">
+  </div>
+</div>

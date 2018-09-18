@@ -12,165 +12,8 @@ type COMMAND = 'bold' | 'italic' | 'underline' | 'fontsize' | 'forecolor' | 'bac
 
 @Component({
   selector: 'ng-simple-editor',
-  template: `
-  <ng-template #tBold><button type="button" (click)="bold( $event )">{{ t.bold }}</button></ng-template>
-<ng-template #tItalic><button type="button" (click)="italic( $event )">{{ t.italic }}</button></ng-template>
-<ng-template #tUnderline><button type="button" (click)="underline( $event )">{{ t.underline }}</button></ng-template>
-<ng-template #tStrike><button type="button" (click)="strikeThrough( $event )">{{ t.strike }}</button></ng-template>
-<ng-template #tFontsize>
-    <select (change)="fontSize( $event )">
-        <option value='0'>{{ t.size }}</option>
-        <option value='1'>1</option>
-        <option value='2'>2</option>
-        <option value='3'>3</option>
-        <option value='4'>4</option>
-        <option value='5'>5</option>
-        <option value='6'>6</option>
-        <option value='7'>7</option>
-      </select>
-</ng-template>
-<ng-template #tForecolor>
-    <select (change)="forecolor( $event )">
-    <option value=''>{{ t.forecolor }}</option>
-    <option value='black'>Black</option>
-    <option value='blue'>Blue</option>
-    <option value='blueviolet'>BlueViolet</option>
-    <option value='brown'>Brown</option>
-    <option value='gold'>Gold</option>
-    <option value='green'>Green</option>
-    <option value='grey'>Grey</option>
-    <option value='navy'>Navy</option>
-    <option value='red'>Red</option>
-    <option value='tomato'>Tomato</option>
-    <option value='yellow'>Yellow</option>
-  </select>
-</ng-template>
-<ng-template #tBackcolor>
-    <select (change)="backcolor( $event )">
-        <option value=''>{{ t.backcolor }}</option>
-        <option value='black'>Black</option>
-        <option value='blue'>Blue</option>
-        <option value='blueviolet'>BlueViolet</option>
-        <option value='brown'>Brown</option>
-        <option value='darkblue'>DarkBlue</option>
-        <option value='gold'>Gold</option>
-        <option value='green'>Green</option>
-        <option value='grey'>Grey</option>
-        <option value='navy'>Navy</option>
-        <option value='red'>Red</option>
-        <option value='tomato'>Tomato</option>
-        <option value='yellow'>Yellow</option>
-      </select>
-</ng-template>
-<ng-template #tHighlight>
-    <select (change)="highlight( $event )">
-        <option value=''>{{ t.highlight }}</option>
-        <option value='black,white'>Black and White</option>
-        <option value='blue,white'>Blue and White</option>
-        <option value='green,white'>Green and White</option>
-        <option value='red,white'>Red and White</option>
-        <option value='gold,white'>Yellow and White</option>
-      </select>
-</ng-template>
-<ng-template #tLink><button type="button" (click)="link( $event )">{{ t.link }}</button></ng-template>
-<ng-template #tUnlink><button type="button" (click)="unlink( $event )">{{ t.unlink }}</button></ng-template>
-<ng-template #tTable>
-    <select (change)="table( $event )">
-        <option value=''>{{ t.table }}</option>
-        <option value='1x2'>1x2</option>
-        <option value='1x3'>1x3</option>
-        <option value='1x4'>1x4</option>
-        <option value='1x5'>1x5</option>
-        <option value='2x2'>2x2</option>
-        <option value='2x3'>2x3</option>
-        <option value='2x4'>2x4</option>
-        <option value='2x5'>2x5</option>
-        <option value='3x2'>3x2</option>
-        <option value='3x3'>3x3</option>
-        <option value='3x4'>3x4</option>
-        <option value='3x5'>3x5</option>
-        <option value='4x2'>4x2</option>
-        <option value='4x3'>4x3</option>
-        <option value='4x4'>4x4</option>
-        <option value='4x5'>4x5</option>
-        <option value='5x2'>5x2</option>
-        <option value='5x3'>5x3</option>
-        <option value='5x4'>5x4</option>
-        <option value='5x5'>5x5</option>
-      </select>
-</ng-template>
-<ng-template #tFontname>
-    <select (change)="fontName( $event )">
-        <option value=''>{{ t.fontname }}</option>
-        <option value='Arial'>Arial</option>
-        <option value='Arial Black'>Arial Black</option>
-        <option value='Comic Sans MS'>Comic Sans MS</option>
-        <option value='Courier New'>Courier New</option>
-        <option value='Georgia'>Georgia</option>
-        <option value='Helvetica'>Helvetica</option>
-        <option value='Impact'>Impact</option>
-        <option value='Times New Roman'>Times New Roman</option>
-        <option value='Verdana'>Verdana</option>
-        <option value='맑은 고딕,Malgun Gothic,AppleGothic'>맑은 고딕</option>
-      </select>
-</ng-template>
-<ng-template #tFormatblock>
-    <select (change)="formatBlock( $event )">
-        <option value=''>{{ t.format }}</option>
-        <option value='H1'>H1</option>
-        <option value='H2'>H2</option>
-        <option value='H3'>H3</option>
-        <option value='H4'>H4</option>
-        <option value='H5'>H5</option>
-        <option value='H6'>H6</option>
-        <option value='P'>Paragraph</option>
-      </select>
-</ng-template>
-<ng-template #tIndent><button type="button" (click)="indent( $event )">{{ t.indent }}</button></ng-template>
-<ng-template #tOutdent><button type="button" (click)="outdent( $event )">{{ t.outdent }}</button></ng-template>
-<ng-template #tInsertline><button type="button" (click)="insertHorizontalRule( $event )">{{ t.line }}</button></ng-template>
-<ng-template #tImage><button type="button" (click)="insertImage()">{{ t.image }}</button></ng-template>
-<ng-template #tOrderedlist><button type="button" (click)="insertOrderedList( $event )">{{ t.orderedlist }}</button></ng-template>
-<ng-template #tUnorderedlist><button type="button" (click)="insertUnorderedList( $event )">{{ t.unorderedlist }}</button></ng-template>
-<ng-template #tLeft><button type="button" (click)="justifyLeft( $event )">{{ t.left }}</button></ng-template>
-<ng-template #tCenter><button type="button" (click)="justifyCenter( $event )">{{ t.center }}</button></ng-template>
-<ng-template #tRight><button type="button" (click)="justifyRight( $event )">{{ t.right }}</button></ng-template>
-<ng-template #tUnformat><button type="button" (click)="removeFormat( $event )">{{ t.unformat }}</button></ng-template>
-<ng-template #tBigview><button type="button" (click)="bigContentSize( $event )">{{ t.bigView }}</button></ng-template>
-<ng-template #tSmallview><button type="button" (click)="originalContentSize( $event )">{{ t.smallView }}</button></ng-template>
-
-<div class="editor">
-  <div class="buttons">
-    <ng-container *ngFor="let T of containerButtons">
-    <ng-container *ngTemplateOutlet=" T "></ng-container>
-    </ng-container>
-  </div>
-  <div #editorContent class="content" [attr.size]=" contentSize " contenteditable="true"
-    (input)=" onChange( $event ) ">
-  </div>
-</div>
-
-  `,
-  styles: [
-    `
-    .editor .content {
-      padding: 8px;
-      overflow: auto;
-      border: 1px solid grey;
-      box-sizing: border-box;
-      width: 100%;
-      height: 200px;
-      background-color: white;
-      color: black;
-  }
-  .editor .content[size='big'] {
-      height: 600px;
-  }
-  .editor .content img {
-      max-width: 100%;
-  }
-  `
-  ],
+  templateUrl: 'ng-simple-editor.component.html',
+  styleUrls: ['ng-simple-editor.component.css'],
   encapsulation: ViewEncapsulation.None
 })
 export class NgSimpleEditorComponent implements OnInit, OnChanges, AfterViewInit {
@@ -199,7 +42,7 @@ export class NgSimpleEditorComponent implements OnInit, OnChanges, AfterViewInit
   @ViewChild('tLeft') tLeft: ElementRef;
   @ViewChild('tCenter') tCenter: ElementRef;
   @ViewChild('tRight') tRight: ElementRef;
-  @ViewChild('tUnformat') tUnformat: ElementRef;
+  @ViewChild('tRemoveFormat') tRemoveFormat: ElementRef;
   @ViewChild('tBigview') tBigview: ElementRef;
   @ViewChild('tSmallview') tSmallview: ElementRef;
 
@@ -212,20 +55,21 @@ export class NgSimpleEditorComponent implements OnInit, OnChanges, AfterViewInit
     content: '',
     cursor: false
   };
+  @Input() icons = false;
 
   /**
  * default buttons.
  */
-  @Input() buttons: Array<COMMAND> = [];
+  @Input() buttons: Array<COMMAND> = null;
 
-  nameButtons: { [name: string]: ElementRef } = {};
+  supportedButtons: { [name: string]: ElementRef } = {};
   containerButtons: Array<ElementRef> = [];
 
   contentSize: 'big' | 'normal' = 'normal';
 
   t = {
     strike: 'Strike',
-    size: 'Size',
+    fontsize: 'Size',
     forecolor: 'Color',
     backcolor: 'Background Color',
     highlight: 'Highlight',
@@ -242,43 +86,14 @@ export class NgSimpleEditorComponent implements OnInit, OnChanges, AfterViewInit
     left: 'Left',
     center: 'Center',
     right: 'Right',
-    unformat: 'Unformat',
+    removeformat: 'Remove Format',
     bigView: '+',
     smallView: '-',
-    line: 'Line',
+    insertline: 'Line',
     bold: 'B',
     italic: 'I',
     underline: 'U'
   };
-
-  tKorean = {
-    strike: '가운데줄',
-    size: '글자크기',
-    forecolor: '글자색',
-    backcolor: '배경색',
-    highlight: '강조표시',
-    link: '링크',
-    unlink: '링크해제',
-    table: '테이블',
-    fontname: '글자체',
-    format: '포멧(헤더)',
-    indent: '들여쓰기',
-    outdent: '내어쓰기',
-    image: '사진',
-    orderedlist: '목록(점)',
-    unorderedlist: '목록(번호)',
-    left: '왼쪽',
-    center: '중간',
-    right: '오른쪽',
-    unformat: '양식제거',
-    bigView: '크게',
-    smallView: '작게',
-    line: '라인분리',
-    bold: '굵게',
-    italic: '기울기',
-    underline: '밑줄'
-  };
-
 
   constructor() {
   }
@@ -299,37 +114,44 @@ export class NgSimpleEditorComponent implements OnInit, OnChanges, AfterViewInit
 
     console.log(' ==> ngAfterViewInit() ');
 
-    this.nameButtons['bold'] = this.tBold;
-    this.nameButtons['italic'] = this.tItalic;
-    this.nameButtons['underline'] = this.tUnderline;
-    this.nameButtons['strike'] = this.tStrike;
-    this.nameButtons['fontsize'] = this.tFontsize;
-    this.nameButtons['forecolor'] = this.tForecolor;
-    this.nameButtons['backcolor'] = this.tBackcolor;
-    this.nameButtons['highlight'] = this.tHighlight;
-    this.nameButtons['link'] = this.tLink;
-    this.nameButtons['unlink'] = this.tUnlink;
-    this.nameButtons['table'] = this.tTable;
-    this.nameButtons['fontname'] = this.tFontname;
-    this.nameButtons['formatblock'] = this.tFormatblock;
-    this.nameButtons['indent'] = this.tIndent;
-    this.nameButtons['outdent'] = this.tOutdent;
-    this.nameButtons['insertline'] = this.tInsertline;
-    this.nameButtons['insertimage'] = this.tImage;
-    this.nameButtons['orderedlist'] = this.tOrderedlist;
-    this.nameButtons['unorderedlist'] = this.tUnorderedlist;
-    this.nameButtons['left'] = this.tLeft;
-    this.nameButtons['center'] = this.tCenter;
-    this.nameButtons['right'] = this.tRight;
-    this.nameButtons['removeformat'] = this.tUnformat;
-    this.nameButtons['big'] = this.tBigview;
-    this.nameButtons['normal'] = this.tSmallview;
+    this.supportedButtons['bold'] = this.tBold;
+    this.supportedButtons['italic'] = this.tItalic;
+    this.supportedButtons['underline'] = this.tUnderline;
+    this.supportedButtons['strike'] = this.tStrike;
+    this.supportedButtons['fontsize'] = this.tFontsize;
+    this.supportedButtons['forecolor'] = this.tForecolor;
+    this.supportedButtons['backcolor'] = this.tBackcolor;
+    this.supportedButtons['highlight'] = this.tHighlight;
+    this.supportedButtons['link'] = this.tLink;
+    this.supportedButtons['unlink'] = this.tUnlink;
+    this.supportedButtons['table'] = this.tTable;
+    this.supportedButtons['fontname'] = this.tFontname;
+    this.supportedButtons['formatblock'] = this.tFormatblock;
+    this.supportedButtons['indent'] = this.tIndent;
+    this.supportedButtons['outdent'] = this.tOutdent;
+    this.supportedButtons['insertline'] = this.tInsertline;
+    this.supportedButtons['insertimage'] = this.tImage;
+    this.supportedButtons['orderedlist'] = this.tOrderedlist;
+    this.supportedButtons['unorderedlist'] = this.tUnorderedlist;
+    this.supportedButtons['left'] = this.tLeft;
+    this.supportedButtons['center'] = this.tCenter;
+    this.supportedButtons['right'] = this.tRight;
+    this.supportedButtons['removeformat'] = this.tRemoveFormat;
+    this.supportedButtons['big'] = this.tBigview;
+    this.supportedButtons['normal'] = this.tSmallview;
 
-    console.log('EditorComponent::ngAfterViewInit() ', this.init);
+    // console.log('EditorComponent::ngAfterViewInit() ', this.init);
+
+    /**
+     * Default content
+     */
     if (this.init.content) {
       this.putContent(this.init.content);
     }
 
+    /**
+     * Set cursor awhile later.
+     */
     setTimeout(() => {
       if (this.init.cursor) {
         this.setEndOfContenteditable();
@@ -352,31 +174,39 @@ export class NgSimpleEditorComponent implements OnInit, OnChanges, AfterViewInit
      */
     this.containerButtons = [];
 
-    console.log('resetButtons()');
+    // console.log('resetButtons()');
 
     /**
      * Add buttons on button list
      */
-    if (this.buttons && this.buttons.length) {
-      console.log('buttons: ', this.buttons);
+    if (this.buttons) {
       for (const k of this.buttons) {
-        if (this.is(k)) {
-          this.containerButtons.push(this.nameButtons[k]);
+        // @Input() button is an array of string?
+        if (typeof k === 'string') {
+          if (this.isSupported(k)) {
+            this.containerButtons.push(this.supportedButtons[k]);
+          }
+        } else {
+          // @Input() button is an array of object?
+          const button = k['button'];
+          console.log('button: ', button);
+          if (this.isSupported(button)) {
+            console.log('k: ', k);
+            this.containerButtons.push(this.supportedButtons[button]);
+            this.t[button] = k['text'];
+          }
         }
       }
     } else {
-      console.log('buttons is empty');
-      for (const k of Object.keys(this.nameButtons)) {
-        this.containerButtons.push(this.nameButtons[k]);
+      // console.log('@Input() buttons is empty. Display all buttons');
+      for (const k of Object.keys(this.supportedButtons)) {
+        this.containerButtons.push(this.supportedButtons[k]);
       }
     }
 
   }
   /**
-   * 커서를 에디터 맨 마지막에 놓는다.
-   *
-   * 소스코드를 https://gist.github.com/al3x-edge/1010364 에서 가져왔다.
-   *
+   * Put cursor at the end of editor.
    */
   setEndOfContenteditable() {
     const contentEditableElement = this.editorComponent.nativeElement;
@@ -457,17 +287,14 @@ export class NgSimpleEditorComponent implements OnInit, OnChanges, AfterViewInit
   }
 
   /**
-   * Returns true if buttons array has buttonName.
+   * Returns true if the input button is supported by the editor.
+   * @desc This checks if the input buttonName button exists in 'buttons' array.
    * @param buttonName button name
    * @return
    *  false if the buttons array is empty or buttonName is not found.
    */
-  is(buttonName: COMMAND): boolean {
-    if (!this.buttons && !this.buttons.length) {
-      return false;
-    } else {
-      return this.buttons.indexOf(buttonName) !== -1;
-    }
+  isSupported(buttonName: COMMAND): boolean {
+    return this.supportedButtons[buttonName] !== void 0;
   }
 
   @HostListener('input', ['$event.target']) onContentChange(target: Element) {
@@ -565,9 +392,17 @@ export class NgSimpleEditorComponent implements OnInit, OnChanges, AfterViewInit
   }
 
   /**
-   * 이미지를 추가 할 때, style 을 같이 추가해야 하기 때문에, insertHTML 로 한다.
+   * Use this method to insert an image into editor.
+   * @desc It needs to add style.
+   * @desc You can use this method to dynamically insert image into the editor.
+   *        For instance, You can make your own logic to upload a image and after upload image,
+   *        Use this method to insert that image.
    * @param src Image src
    * @param name Image name
+   * @param idx idx is unqiue index to identify which image you are dealing with.
+   *            You can assign any value to idx and it's up to you how you are going to handle it.
+   * @example
+   *    this.editor.insertImage( 'http://domani.com/image.jpg', 'Image name', 'unique-no' );
    */
   insertImage(src?, name?, idx?) {
     if (!src) {
@@ -579,18 +414,26 @@ export class NgSimpleEditorComponent implements OnInit, OnChanges, AfterViewInit
     /**
      * If the length of src is less than 9, then it is being considered wrong url.
      */
-    if ( src.length < 9 ) {
+    if (src.length < 9) {
       return;
     }
     const tag = `<IMG class="editor-image" SRC="${src}" ALT="${name}" idx="${idx}" style="max-width: 100%;"><BR>Image: ${name}<BR>`;
     this.execCommand('insertHTML', false, tag);
     this.setEndOfContenteditable();
-    // this.execCommand('insertImage', false, src);
   }
-  bigContentSize(event: Event) {
+
+  /**
+   * Make the editor size bigger.
+   * @param event event
+   */
+  bigContentSize(event?: Event) {
     this.contentSize = 'big';
   }
-  originalContentSize(event: Event) {
+  /**
+   * Make the eidtor size normal.
+   * @param event event
+   */
+  originalContentSize(event?: Event) {
     this.contentSize = 'normal';
   }
 
@@ -673,6 +516,6 @@ export class NgSimpleEditorComponent implements OnInit, OnChanges, AfterViewInit
    * @param event event
    */
   onChange(event: Event) {
-      this.change.emit(event);
+    this.change.emit(event);
   }
 }

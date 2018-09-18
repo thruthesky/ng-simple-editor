@@ -3,7 +3,7 @@
 ## Why
 
 * I search Angular/Ionic Web editors and I couldn't find simple one. All of them have dependencies like jQury, Bootstrap, Fontawesome, etc.
-* So I made one for myself. It's deadly simple. Easy to edit. No dependencies at all.
+* So I made one. It's deadly simple. Easy to edit. No dependencies at all.
 
 ## How to Install
 
@@ -101,6 +101,9 @@ content: {{ editor.content }}
   }
 ````
 
+## How to upload files
+
+* `ng-simple-editor` does not have file/photo/video upload functionaliy. You have to make your own file upload function in your app. And then you can insert your uploaded file into editor using `editor.insertImage()` method.
 
 ## Tips
 
