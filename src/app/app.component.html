@@ -1,9 +1,14 @@
 <h1>Editor</h1>
-
 <ng-simple-editor #editor (change)=" onChange( $event ) "></ng-simple-editor>
 HTML content: {{ editor.content }}
-<h1>Editor with chosen buttons</h1>
 
+
+<h1>Editor with icons</h1>
+<ng-simple-editor #editor4 [init]="{ cursor: true }" [icons]="true"></ng-simple-editor>
+HTML content: {{ editor4.content }}
+
+
+<h1>Editor with chosen buttons</h1>
 <ng-simple-editor #editor2 [buttons]="['bold', 'italic', 'underline', 'fontsize', 'forecolor', 'backcolor', 'highlight', 'link', 'unink', 'table', 'formatblock', 'insertline', 'insertimage', 'orderedlist', 'unorderedlist', 'left', 'center', 'removeformat', 'strike', 'big', 'normal']"></ng-simple-editor>
 HTML content: {{ editor2.content }}
 
@@ -37,10 +42,4 @@ HTML content: {{ editor2.content }}
 { button: 'insertline', text: '라인분리' }
 ]"></ng-simple-editor>
 HTML content: {{ editor3.content }}
-
-
-<h1>Editor with icon</h1>
-
-<ng-simple-editor #editor4 [init]="{ cursor: true }" [icons]="true"></ng-simple-editor>
-HTML content: {{ editor4.content }}
 
