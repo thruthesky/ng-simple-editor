@@ -2,14 +2,13 @@
 
 <ng-simple-editor #editor (change)=" onChange( $event ) "></ng-simple-editor>
 HTML content: {{ editor.content }}
-<h1>Another Editor</h1>
+<h1>Editor with chosen buttons</h1>
 
 <ng-simple-editor #editor2 [buttons]="['bold', 'italic', 'underline', 'fontsize', 'forecolor', 'backcolor', 'highlight', 'link', 'unink', 'table', 'formatblock', 'insertline', 'insertimage', 'orderedlist', 'unorderedlist', 'left', 'center', 'removeformat', 'strike', 'big', 'normal']"></ng-simple-editor>
 HTML content: {{ editor2.content }}
 
 
-
-<h1>And another editor</h1>
+<h1>Editor in Korean</h1>
 
 <ng-simple-editor #editor3 [init]="{ cursor: true }" [buttons]="[
 { button: 'bold', text: '굵게'},

@@ -49,6 +49,14 @@ content: {{ editor.content }}
   content: {{ editor.content }}
 ````
 
+* Display icons instead of text buttons.
+  * To display icons, set `[icons]="true"` on the component.
+
+```` html
+<ng-simple-editor #editor4 [init]="{ cursor: true }" [icons]="true"></ng-simple-editor>
+HTML content: {{ editor4.content }}
+````
+
 * And put/get HTML into the editor.
 
 ```` typescript
