@@ -5,6 +5,10 @@
 * I search Angular/Ionic Web editors and I couldn't find simple one. All of them have dependencies like jQury, Bootstrap, Fontawesome, etc.
 * So I made one. It's deadly simple. Easy to edit. No dependencies at all.
 
+## Demo
+
+* [GitHub Page Demo](https://thruthesky.github.io/ng-simple-editor/)
+
 ## How to Install
 
 ```` sh
