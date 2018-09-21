@@ -107,6 +107,8 @@ HTML content: {{ editor4.content }}
 <ng-simple-editor #editor (change)=" onChange( $event ) "></ng-simple-editor>
 ````
 
+* If you are going to use `event` parameter from editor, it may contain not only the content but also other event. So, if you want to handle with the content of the ditor, use `this.editor.content` instead.
+
 ```` typescript
   onChange(event: Event) {
     this.content = this.editor.content;
