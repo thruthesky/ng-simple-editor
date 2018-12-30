@@ -9,6 +9,7 @@ import { NgSimpleEditorComponent } from 'projects/ng-simple-editor/src/public_ap
 export class AppComponent implements AfterContentInit {
   title = 'ng-simple-editor-app';
   content;
+  html = '<h1>Two way binding</h1><p><b>Bold</b></p>Normal text';
 
   @ViewChild('editor') editor: NgSimpleEditorComponent;
 

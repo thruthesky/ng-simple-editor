@@ -15,6 +15,26 @@
 npm install --save ng-simple-editor
 ````
 
+## How to serve as developer
+
+### Serving
+
+* You need to run two Angular building process. One for App component serving and the other is for editor building.
+
+```` sh
+ng s
+````
+
+```` sh
+ng build ng-simple-editor --watch
+````
+
+### Publising
+
+```` sh
+npm run lib:publish
+````
+
 ## How to Use
 
 ### How to set up
@@ -35,7 +55,14 @@ export class AppModule { }
 
 ### How to use it in template
 
-* Very simple.
+* Two-way binding
+
+````html
+<ng-simple-editor [init]="{ cursor: true }" [icons]="true" [(html)]=" html "></ng-simple-editor>
+HTML content: {{ html }}
+````
+
+* Event handling
 
 ```` html
 <ng-simple-editor #editor></ng-simple-editor>

@@ -43,3 +43,7 @@ HTML content: {{ editor2.content }}
 ]"></ng-simple-editor>
 HTML content: {{ editor3.content }}
 
+
+<h1>[(html)] - two way binding</h1>
+<ng-simple-editor [init]="{ cursor: true }" [icons]="true" [(html)]=" html "></ng-simple-editor>
+HTML content: {{ html }}

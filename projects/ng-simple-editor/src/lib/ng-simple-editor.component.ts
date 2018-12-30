@@ -46,6 +46,10 @@ export class NgSimpleEditorComponent implements OnInit, OnChanges, AfterViewInit
   @ViewChild('tBigview') tBigview: ElementRef;
   @ViewChild('tSmallview') tSmallview: ElementRef;
 
+
+  @Input() html = '';
+  @Output() htmlChange = new EventEmitter<string>();
+
   /**
    * When content changes, 'change' event with content will be fired.
    * @desc This will fire with all the changes. Not only text changes but also HTML tag changes.
@@ -96,6 +100,7 @@ export class NgSimpleEditorComponent implements OnInit, OnChanges, AfterViewInit
   };
 
   constructor() {
+    window['editor'] = this;
   }
 
 
@@ -103,7 +108,7 @@ export class NgSimpleEditorComponent implements OnInit, OnChanges, AfterViewInit
   }
 
   ngOnChanges() {
-    console.log(' ==> ngOnChanges() ');
+    // console.log(' ==> ngOnChanges() ');
     /**
      * @desc `resetButtons()` must be needed here because @Input property - [buttons] may changes at anytime.
      */
@@ -112,7 +117,7 @@ export class NgSimpleEditorComponent implements OnInit, OnChanges, AfterViewInit
 
   ngAfterViewInit() {
 
-    console.log(' ==> ngAfterViewInit() ');
+    // console.log(' ==> ngAfterViewInit() ');
 
     this.supportedButtons['bold'] = this.tBold;
     this.supportedButtons['italic'] = this.tItalic;
@@ -147,6 +152,13 @@ export class NgSimpleEditorComponent implements OnInit, OnChanges, AfterViewInit
      */
     if (this.init.content) {
       this.putContent(this.init.content);
+    }
+
+    /**
+     * If this.html has value, it is applied.
+     */
+    if ( this.html ) {
+      this.putContent( this.html );
     }
 
     /**
@@ -189,9 +201,9 @@ export class NgSimpleEditorComponent implements OnInit, OnChanges, AfterViewInit
         } else {
           // @Input() button is an array of object?
           const button = k['button'];
-          console.log('button: ', button);
+          // console.log('button: ', button);
           if (this.isSupported(button)) {
-            console.log('k: ', k);
+            // console.log('k: ', k);
             this.containerButtons.push(this.supportedButtons[button]);
             this.t[button] = k['text'];
           }
@@ -258,9 +270,11 @@ export class NgSimpleEditorComponent implements OnInit, OnChanges, AfterViewInit
   getContent(): string {
     return this.editorComponent.nativeElement.innerHTML;
   }
+
   get content(): string {
     return this.getContent();
   }
+
   putContent(html: string) {
     this.editorComponent.nativeElement.innerHTML = html;
   }
@@ -271,9 +285,9 @@ export class NgSimpleEditorComponent implements OnInit, OnChanges, AfterViewInit
    * @example
    *      this.editorComponent.removeContent(`img[idx="${idx}"]`);
    *
-   * @param querySelector() 에 들어가는 표현. 이 표현으로 삭제할 항목(HTML Element)을 매치한다.
+   * @param exp Javascript 함수의 querySelector() 에 들어가는 표현. 이 표현으로 삭제할 항목(HTML Element)을 매치한다.
    */
-  removeContent(exp) {
+  removeContent(exp: string) {
     if (!exp) {
       return;
     }
@@ -344,7 +358,7 @@ export class NgSimpleEditorComponent implements OnInit, OnChanges, AfterViewInit
   }
   link(event: Event) {
     const link = prompt('Enter a link', 'http://');
-    console.log('link: ', link);
+    // console.log('link: ', link);
     if (link) {
       this.execCommand('createLink', false, link);
     }
@@ -517,5 +531,8 @@ export class NgSimpleEditorComponent implements OnInit, OnChanges, AfterViewInit
    */
   onChange(event: Event) {
     this.change.emit(event);
+    this.htmlChange.emit( this.getContent() );
   }
+
 }
+
