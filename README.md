@@ -31,6 +31,9 @@ ng build ng-simple-editor --watch
 
 ### Publising
 
+* Patch version in `projects/ng-simple-editor/package.json`.
+* And run publish command.
+
 ```` sh
 npm run lib:publish
 ````
