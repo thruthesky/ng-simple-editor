@@ -149,6 +149,10 @@ HTML content: {{ editor4.content }}
 
 * `ng-simple-editor` does not have file/photo/video upload functionaliy. You have to make your own file upload function in your app. And then you can insert your uploaded file into editor using `editor.insertImage()` method.
 
+## Design
+
+* `ViewEncapsulation.None` is set on the `NgSimpleEditorComponent`.
+
 ## Tips
 
 * On mobile, it is not easy selecting texts and apply HTML. So, in mobile, you may show only thoese buttons that does not require text selection like format, left, center, right, ol, ul, etc.
