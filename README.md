@@ -160,6 +160,18 @@ div.editor
   div.content
 ````
 
+* Example of auto grow for editor content. You may remove [+] and [-] button in this case.
+
+```` css
+.editor {
+    .content {
+        height: auto !important;
+        min-height: 120px;
+        max-height: 200px;
+    }
+}
+````
+
 ## Tips
 
 * On mobile, it is not easy selecting texts and apply HTML. So, in mobile, you may show only thoese buttons that does not require text selection like format, left, center, right, ol, ul, etc.
