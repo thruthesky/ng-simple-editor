@@ -152,6 +152,13 @@ HTML content: {{ editor4.content }}
 ## Design
 
 * `ViewEncapsulation.None` is set on the `NgSimpleEditorComponent`.
+* DOM structure
+
+```` html
+div.editor
+  div.buttons
+  div.content
+````
 
 ## Tips
 
