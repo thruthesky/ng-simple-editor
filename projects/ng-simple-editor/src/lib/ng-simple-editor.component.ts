@@ -49,8 +49,8 @@ export class NgSimpleEditorComponent implements OnInit, OnChanges, AfterViewInit
   @ViewChild('tFullview') tFullview: ElementRef;
 
 
-  @Input() html = '';
-  @Output() htmlChange = new EventEmitter<string>();
+  // @Input() html = '';
+  // @Output() htmlChange = new EventEmitter<string>();
 
   /**
    * When content changes, 'change' event with content will be fired.
@@ -116,12 +116,12 @@ export class NgSimpleEditorComponent implements OnInit, OnChanges, AfterViewInit
      * @desc `resetButtons()` must be needed here because @Input property - [buttons] may changes at anytime.
      */
     setTimeout(() => this.resetButtons(), 50);
-    if (changes['html']) {
-      const html = changes['html'];
-      if (html.previousValue !== html.currentValue) {
-        this.putContent(html.currentValue);
-      }
-    }
+    // if (changes['html']) {
+    //   const html = changes['html'];
+    //   if (html.previousValue !== html.currentValue) {
+    //     this.putContent(html.currentValue);
+    //   }
+    // }
   }
 
   ngAfterViewInit() {
@@ -166,9 +166,10 @@ export class NgSimpleEditorComponent implements OnInit, OnChanges, AfterViewInit
     /**
      * If this.html has value, it is applied.
      */
-    if (this.html) {
-      this.putContent(this.html);
-    }
+    // if (this.html) {
+    //   this.putContent(this.html);
+    // }
+
 
     /**
      * Set cursor awhile later.
@@ -548,7 +549,7 @@ export class NgSimpleEditorComponent implements OnInit, OnChanges, AfterViewInit
    */
   onChange(event: Event) {
     this.change.emit(event);
-    this.htmlChange.emit(this.getContent());
+    // this.htmlChange.emit(this.getContent());
   }
 
 }

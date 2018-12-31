@@ -18,7 +18,7 @@ export class AppComponent implements OnInit, AfterContentInit {
 
   ngOnInit() {
     for (let i = 0; i < 10; i++) {
-      setTimeout(() => this.html = i, i * 1000);
+      setTimeout(() => this.html = i, i * 3000);
     }
   }
 
