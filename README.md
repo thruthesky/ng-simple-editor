@@ -62,10 +62,10 @@ export class AppModule { }
 
 ### How to use it in template
 
-* Two-way binding
+* Two-way binding. Don't forget to put 'name' attribute if it is used in form.
 
 ````html
-<ng-simple-editor [init]="{ cursor: true }" [icons]="true" [(html)]=" html "></ng-simple-editor>
+<ng-simple-editor [init]="{ cursor: true }" [icons]="true" name="html" [(html)]=" html "></ng-simple-editor>
 HTML content: {{ html }}
 ````
 

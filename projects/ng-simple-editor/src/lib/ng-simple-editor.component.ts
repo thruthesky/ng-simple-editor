@@ -522,7 +522,7 @@ export class NgSimpleEditorComponent implements OnInit, OnChanges, AfterViewInit
    * @example
    *    this.editor.insertImage( 'http://domani.com/image.jpg', 'Image name', 'unique-no' );
    */
-  insertImage(src?, name?, idx?) {
+  insertImage(src?: string, name?: string, idx?: any) {
     if (!src) {
       src = prompt('Enter a link', 'http://');
     }
@@ -535,7 +535,7 @@ export class NgSimpleEditorComponent implements OnInit, OnChanges, AfterViewInit
     if (src.length < 9) {
       return;
     }
-    const tag = `<IMG class="editor-image" SRC="${src}" ALT="${name}" idx="${idx}" style="max-width: 100%;"><BR>Image: ${name}<BR>`;
+    const tag = `<IMG class="editor-image" SRC="${src}" ALT="${name}" idx="${idx}" style="max-width: 100%;">`;
     this.execCommand('insertHTML', false, tag);
     this.setEndOfContenteditable();
   }
