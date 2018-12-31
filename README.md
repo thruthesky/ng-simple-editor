@@ -9,6 +9,10 @@
 
 * [GitHub Page Demo](https://thruthesky.github.io/ng-simple-editor/)
 
+## Example code
+
+* @see [Example Component Template](https://github.com/thruthesky/ng-simple-editor/blob/master/src/app/app.component.html)
+
 ## How to Install
 
 ```` sh
