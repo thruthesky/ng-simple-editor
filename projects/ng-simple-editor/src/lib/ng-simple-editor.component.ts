@@ -1,7 +1,8 @@
 import {
   Component, OnInit, ViewChild, ElementRef, Input, HostListener, OnChanges, AfterViewInit, ViewEncapsulation,
   Output,
-  EventEmitter
+  EventEmitter,
+  SimpleChanges
 } from '@angular/core';
 
 
@@ -109,12 +110,18 @@ export class NgSimpleEditorComponent implements OnInit, OnChanges, AfterViewInit
   ngOnInit() {
   }
 
-  ngOnChanges() {
+  ngOnChanges(changes: SimpleChanges) {
     // console.log(' ==> ngOnChanges() ');
     /**
      * @desc `resetButtons()` must be needed here because @Input property - [buttons] may changes at anytime.
      */
     setTimeout(() => this.resetButtons(), 50);
+    if (changes['html']) {
+      const html = changes['html'];
+      if (html.previousValue !== html.currentValue) {
+        this.putContent(html.currentValue);
+      }
+    }
   }
 
   ngAfterViewInit() {
@@ -159,8 +166,8 @@ export class NgSimpleEditorComponent implements OnInit, OnChanges, AfterViewInit
     /**
      * If this.html has value, it is applied.
      */
-    if ( this.html ) {
-      this.putContent( this.html );
+    if (this.html) {
+      this.putContent(this.html);
     }
 
     /**
@@ -454,7 +461,7 @@ export class NgSimpleEditorComponent implements OnInit, OnChanges, AfterViewInit
   }
 
   fullContentSize(event?: Event) {
-    if ( this.contentSize === 'full' ) {
+    if (this.contentSize === 'full') {
       this.contentSize = 'normal';
     } else {
       this.contentSize = 'full';
@@ -541,7 +548,7 @@ export class NgSimpleEditorComponent implements OnInit, OnChanges, AfterViewInit
    */
   onChange(event: Event) {
     this.change.emit(event);
-    this.htmlChange.emit( this.getContent() );
+    this.htmlChange.emit(this.getContent());
   }
 
 }
