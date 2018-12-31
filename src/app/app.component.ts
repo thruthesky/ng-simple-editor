@@ -7,19 +7,15 @@ import { NgSimpleEditorComponent } from 'projects/ng-simple-editor/src/public_ap
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit, AfterContentInit {
-  title = 'ng-simple-editor-app';
-  content: string;
-  html: any = `<h1>Two binding test</h1>`;
   @ViewChild('editor') editor: NgSimpleEditorComponent;
-
+  content: string;
+  twoway = '<h1>Twoway binding</h1>';
   constructor() {
 
   }
 
   ngOnInit() {
-    for (let i = 0; i < 10; i++) {
-      setTimeout(() => this.html = i, i * 3000);
-    }
+      setTimeout(() => this.twoway = '<h1>Twoway Binding Test</h1>', 5000);
   }
 
   ngAfterContentInit() {

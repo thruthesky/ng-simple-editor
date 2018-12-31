@@ -334,6 +334,7 @@
       <ng-container *ngTemplateOutlet=" T "></ng-container>
     </ng-container>
   </div>
-  <div #editorContent class="content" contenteditable="true" (input)=" onChange( $event ) ">
+  <div #editorContent class="content" contenteditable="true"
+  (input)=" onEditorChange( $event ) ">
   </div>
 </div>

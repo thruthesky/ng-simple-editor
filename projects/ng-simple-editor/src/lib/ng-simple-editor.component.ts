@@ -2,8 +2,10 @@ import {
   Component, OnInit, ViewChild, ElementRef, Input, HostListener, OnChanges, AfterViewInit, ViewEncapsulation,
   Output,
   EventEmitter,
-  SimpleChanges
+  SimpleChanges,
+  forwardRef
 } from '@angular/core';
+import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 
 
 type COMMAND = 'bold' | 'italic' | 'underline' | 'fontsize' | 'forecolor' | 'backcolor'
@@ -15,9 +17,19 @@ type COMMAND = 'bold' | 'italic' | 'underline' | 'fontsize' | 'forecolor' | 'bac
   selector: 'ng-simple-editor',
   templateUrl: 'ng-simple-editor.component.html',
   styleUrls: ['ng-simple-editor.component.css'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => NgSimpleEditorComponent),
+      multi: true
+    }
+  ]
 })
-export class NgSimpleEditorComponent implements OnInit, OnChanges, AfterViewInit {
+export class NgSimpleEditorComponent implements OnInit, OnChanges, AfterViewInit, ControlValueAccessor {
+
+  // Allow the input to be disabled, and when it is make it somewhat transparent.
+  @Input() disabled = false;
 
   @ViewChild('editorContent') editorComponent: ElementRef;
 
@@ -51,6 +63,7 @@ export class NgSimpleEditorComponent implements OnInit, OnChanges, AfterViewInit
 
   // @Input() html = '';
   // @Output() htmlChange = new EventEmitter<string>();
+
 
   /**
    * When content changes, 'change' event with content will be fired.
@@ -106,6 +119,83 @@ export class NgSimpleEditorComponent implements OnInit, OnChanges, AfterViewInit
     window['editor'] = this;
   }
 
+  onChange: (value: string) => void;
+  onTouched: () => void;
+  /**
+   * Writes a new value to the element.
+   *
+   * This method will be called by the forms API to write to the view when programmatic
+   * (model -> view) changes are requested.
+   *
+   * Example implementation of `writeValue`:
+   *
+   * ```ts
+   * writeValue(value: any): void {
+   *   this._renderer.setProperty(this._elementRef.nativeElement, 'value', value);
+   * }
+   * ```
+   * @param value value to be executed when there is a change in contenteditable
+   */
+  writeValue(value: any): void {
+
+    // this._renderer.setProperty(this.textArea.nativeElement, 'innerHTML', normalizedValue);
+    this.putContent(value);
+  }
+
+
+  /**
+   * Set the function to be called
+   * when the control receives a change event.
+   *
+   * @param fn a function
+   */
+  registerOnChange(fn: any): void {
+    this.onChange = fn;
+  }
+
+  /**
+   * Set the function to be called
+   * when the control receives a touch event.
+   *
+   * @param fn a function
+   */
+  registerOnTouched(fn: any): void {
+    this.onTouched = fn;
+  }
+
+  /**
+   * This function is called by the forms API when the control status changes to
+   * or from "DISABLED". Depending on the value, it should enable or disable the
+   * appropriate DOM element.
+   *
+   * Example implementation of `setDisabledState`:
+   *
+   * ```ts
+   * setDisabledState(isDisabled: boolean): void {
+    *   this._renderer.setProperty(this._elementRef.nativeElement, 'disabled', isDisabled);
+    * }
+    * ```
+    *
+    * @param isDisabled disable or enable
+    */
+  setDisabledState?(isDisabled: boolean): void {
+
+  }
+
+
+  /**
+   * It fires with all the (input) event including HTML changes.
+   * @param event event
+   */
+  onEditorChange(event: Event) {
+    this.change.emit(event);
+    // this.htmlChange.emit(this.getContent());
+
+    if (typeof this.onChange === 'function') {
+      console.log('onChange is function: ', this.getContent());
+      this.onChange(this.getContent());
+    }
+  }
 
   ngOnInit() {
   }
@@ -159,9 +249,9 @@ export class NgSimpleEditorComponent implements OnInit, OnChanges, AfterViewInit
     /**
      * Default content
      */
-    if (this.init.content) {
-      this.putContent(this.init.content);
-    }
+    // if (this.init.content) {
+    //   this.putContent(this.init.content);
+    // }
 
     /**
      * If this.html has value, it is applied.
@@ -288,6 +378,7 @@ export class NgSimpleEditorComponent implements OnInit, OnChanges, AfterViewInit
   putContent(html: string) {
     this.editorComponent.nativeElement.innerHTML = html;
   }
+
   /**
    * exp 에 해당하는 Element 를 삭제한다.
    * 편집기의 내용 중에서 삭제하고 싶은 것이 있으면 이 메소드를 사용하면 된다.
@@ -322,6 +413,9 @@ export class NgSimpleEditorComponent implements OnInit, OnChanges, AfterViewInit
   }
 
   @HostListener('input', ['$event.target']) onContentChange(target: Element) {
+    /**
+     * Any input on the editor?
+     */
     if (target && target.className && target.className === 'content') {
       // console.log('html: ', this.editorComponent.nativeElement.innerHTML);
     }
@@ -543,14 +637,6 @@ export class NgSimpleEditorComponent implements OnInit, OnChanges, AfterViewInit
     return ln;
   }
 
-  /**
-   * It fires with all the (input) event including HTML changes.
-   * @param event event
-   */
-  onChange(event: Event) {
-    this.change.emit(event);
-    // this.htmlChange.emit(this.getContent());
-  }
 
 }
 

@@ -12,9 +12,7 @@ HTML content: {{ editor4.content }}
 <ng-simple-editor #editor2 [buttons]="['bold', 'italic', 'underline', 'fontsize', 'forecolor', 'backcolor', 'highlight', 'link', 'unink', 'table', 'formatblock', 'insertline', 'insertimage', 'orderedlist', 'unorderedlist', 'left', 'center', 'removeformat', 'strike', 'big', 'normal']"></ng-simple-editor>
 HTML content: {{ editor2.content }}
 
-
 <h1>Editor in Korean</h1>
-
 <ng-simple-editor #editor3 [init]="{ cursor: true }" [buttons]="[
 { button: 'bold', text: '굵게'},
 { button: 'italic', text: '이태릭체' },
@@ -44,6 +42,10 @@ HTML content: {{ editor2.content }}
 HTML content: {{ editor3.content }}
 
 
-<h1>[(html)] - two way binding</h1>
-<ng-simple-editor [init]="{ cursor: true }" [icons]="true" [(html)]=" html "></ng-simple-editor>
-HTML content: {{ html }}
+<h1>[(html)] - two way binding - #editorTwoway</h1>
+<ng-simple-editor [(ngModel)]=" twoway " [init]="{ cursor: true }" [icons]="true"></ng-simple-editor>
+HTML content: {{ twoway }}
+
+
+
+
