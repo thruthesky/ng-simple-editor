@@ -1,6 +1,7 @@
 <h1>Editor</h1>
-<ng-simple-editor #editor (change)=" onChange( $event ) "></ng-simple-editor>
-HTML content: {{ editor.content }}
+<ng-simple-editor #editor [(ngModel)]=" editorContent " (change)=" onChange( $event ) "></ng-simple-editor>
+HTML content: {{ editorContent }}
+<hr>
 
 
 <h1>Editor with icons</h1>
