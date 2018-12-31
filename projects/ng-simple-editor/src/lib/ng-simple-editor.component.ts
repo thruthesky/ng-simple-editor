@@ -45,6 +45,7 @@ export class NgSimpleEditorComponent implements OnInit, OnChanges, AfterViewInit
   @ViewChild('tRemoveFormat') tRemoveFormat: ElementRef;
   @ViewChild('tBigview') tBigview: ElementRef;
   @ViewChild('tSmallview') tSmallview: ElementRef;
+  @ViewChild('tFullview') tFullview: ElementRef;
 
 
   @Input() html = '';
@@ -69,7 +70,7 @@ export class NgSimpleEditorComponent implements OnInit, OnChanges, AfterViewInit
   supportedButtons: { [name: string]: ElementRef } = {};
   containerButtons: Array<ElementRef> = [];
 
-  contentSize: 'big' | 'normal' = 'normal';
+  contentSize: 'big' | 'normal' | 'full' = 'normal';
 
   t = {
     strike: 'Strike',
@@ -96,7 +97,8 @@ export class NgSimpleEditorComponent implements OnInit, OnChanges, AfterViewInit
     insertline: 'Line',
     bold: 'B',
     italic: 'I',
-    underline: 'U'
+    underline: 'U',
+    fullView: 'Full'
   };
 
   constructor() {
@@ -118,7 +120,6 @@ export class NgSimpleEditorComponent implements OnInit, OnChanges, AfterViewInit
   ngAfterViewInit() {
 
     // console.log(' ==> ngAfterViewInit() ');
-
     this.supportedButtons['bold'] = this.tBold;
     this.supportedButtons['italic'] = this.tItalic;
     this.supportedButtons['underline'] = this.tUnderline;
@@ -144,6 +145,7 @@ export class NgSimpleEditorComponent implements OnInit, OnChanges, AfterViewInit
     this.supportedButtons['removeformat'] = this.tRemoveFormat;
     this.supportedButtons['big'] = this.tBigview;
     this.supportedButtons['normal'] = this.tSmallview;
+    this.supportedButtons['full'] = this.tFullview;
 
     // console.log('EditorComponent::ngAfterViewInit() ', this.init);
 
@@ -449,6 +451,14 @@ export class NgSimpleEditorComponent implements OnInit, OnChanges, AfterViewInit
    */
   originalContentSize(event?: Event) {
     this.contentSize = 'normal';
+  }
+
+  fullContentSize(event?: Event) {
+    if ( this.contentSize === 'full' ) {
+      this.contentSize = 'normal';
+    } else {
+      this.contentSize = 'full';
+    }
   }
 
   insertOrderedList(event: Event) {

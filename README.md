@@ -110,7 +110,7 @@ HTML content: {{ editor4.content }}
 ```` html
 <ng-simple-editor #editor *ngIf=" mode != 'fake' "
   [init]=" { content: comment.content_original }"
-  [buttons]="['bold', 'italic', 'unerline', 'fontsize', 'forecolor', 'backcolor', 'highlight', 'link', 'unink', 'table', 'formatblock', 'insertline', 'insertimage', 'orderedlist', 'unorderedlist', 'left', 'center', 'removeformat', 'strike', 'big', 'normal']"
+  [buttons]="['bold', 'italic', 'unerline', 'fontname', 'fontsize', 'forecolor', 'backcolor', 'highlight', 'link', 'unink', 'table', 'formatblock', 'insertline', 'insertimage', 'orderedlist', 'unorderedlist', 'left', 'center', 'right', 'removeformat', 'strike', 'big', 'normal']"
 ></ng-simple-editor>
 ````
 
@@ -128,6 +128,13 @@ HTML content: {{ editor4.content }}
 ## Buttons
 
 * Buttons on editor appears in the order of that they were given in [buttons] property.
+
+* Name of buttons
+
+'bold' | 'italic' | 'underline' | 'fontsize' | 'forecolor' | 'backcolor'
+  | 'highlight' | 'link' | 'unlink' | 'table' | 'fontname' | 'formatblock' | 'indent' | 'outdent'
+  | 'insertline' | 'insertimage' | 'orderedlist' | 'unorderedlist' | 'left' | 'center' | 'right'
+  | 'removeformat' | 'strke' | 'big' | 'normal'
 
 ## Events
 

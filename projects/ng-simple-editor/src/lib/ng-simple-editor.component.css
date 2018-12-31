@@ -1,3 +1,6 @@
+.editor {
+  background-color: white;
+}
 .editor .content {
   padding: 8px;
   overflow: auto;
@@ -9,8 +12,24 @@
   color: black;
 }
 
-.editor .content[size='big'] {
+.editor[size='big'] .content {
   height: 600px;
+}
+
+.editor[size='full'] {
+  position: fixed;
+  z-index: 12345;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-flow: column;
+}
+
+.editor[size='full'] .content {
+  width: 100%;
+  height: 100%;
 }
 
 .editor .content img {
