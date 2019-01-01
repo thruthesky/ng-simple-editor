@@ -1,11 +1,12 @@
 <h1>Editor</h1>
-<ng-simple-editor #editor [(ngModel)]=" editorContent " (change)=" onChange( $event ) "></ng-simple-editor>
-HTML content: {{ editorContent }}
+<ng-simple-editor #editor [(ngModel)]=" editorContent " (change)=" onChange( $event ) " (fileChange)=" onFileChange( $event ) "></ng-simple-editor>
+HTML content: {{ editorContent }}<br>
+Select File: {{ file?.name }}
 <hr>
 
 
 <h1>Editor with icons</h1>
-<ng-simple-editor #editor4 [init]="{ cursor: true }" [icons]="true"></ng-simple-editor>
+<ng-simple-editor #editor4 [init]="{ cursor: true, menuTop: false }" [icons]="true"></ng-simple-editor>
 HTML content: {{ editor4.content }}
 
 

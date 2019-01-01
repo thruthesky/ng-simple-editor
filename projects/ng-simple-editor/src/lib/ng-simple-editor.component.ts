@@ -13,6 +13,14 @@ type COMMAND = 'bold' | 'italic' | 'underline' | 'fontsize' | 'forecolor' | 'bac
   | 'insertline' | 'insertimage' | 'orderedlist' | 'unorderedlist' | 'left' | 'center' | 'right'
   | 'removeformat' | 'strke' | 'big' | 'normal';
 
+export interface EditorInit {
+  content?: string;
+  cursor?: boolean;
+  menuTop?: boolean;
+  menuBottom?: boolean;
+}
+
+
 @Component({
   selector: 'ng-simple-editor',
   templateUrl: 'ng-simple-editor.component.html',
@@ -70,11 +78,10 @@ export class NgSimpleEditorComponent implements OnInit, OnChanges, AfterViewInit
    * @desc This will fire with all the changes. Not only text changes but also HTML tag changes.
    */
   @Output() change = new EventEmitter();
-  @Input() init = {
-    content: '',
-    cursor: false
-  };
+  @Output() fileChange = new EventEmitter();
+  @Input() init: EditorInit = {};
   @Input() icons = false;
+
 
   /**
  * default buttons.
@@ -198,6 +205,14 @@ export class NgSimpleEditorComponent implements OnInit, OnChanges, AfterViewInit
   }
 
   ngOnInit() {
+
+    if ( this.init.menuTop === void 0 ) {
+      this.init.menuTop = true;
+    }
+    if ( this.init.menuBottom === void 0 ) {
+      this.init.menuBottom = true;
+    }
+
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -536,7 +551,7 @@ export class NgSimpleEditorComponent implements OnInit, OnChanges, AfterViewInit
    * @example
    *    this.editor.insertImage( 'http://domani.com/image.jpg', 'Image name', 'unique-no' );
    */
-  insertImage(src?: string, name?: string, idx?: any) {
+  insertImage(src?: string, name = '', idx = '') {
 
     /**
      * 만약, 현재 editor 에 커서가 없는 상태라면, 먼저 포커스를 준다.
@@ -554,7 +569,7 @@ export class NgSimpleEditorComponent implements OnInit, OnChanges, AfterViewInit
       console.log('src is empty');
       return;
     } else {
-      console.log('src: ', src);
+      // console.log('src: ', src);
     }
 
     /**

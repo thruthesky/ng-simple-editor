@@ -11,9 +11,11 @@ export class AppComponent implements OnInit, AfterContentInit {
   editorContent = 'Ng simplest editor!';
   content = '';
   twoway = '<h1>Twoway binding</h1>';
+  file: File = null;
   constructor() {
 
   }
+
 
   ngOnInit() {
     setTimeout(() => this.twoway = '<h1>Twoway Binding Test</h1>', 5000);
@@ -25,5 +27,12 @@ export class AppComponent implements OnInit, AfterContentInit {
 
   onChange(event: Event) {
     this.content = this.editor.content;
+  }
+
+  onFileChange(event: Event) {
+    if (event && event.target && event.target['files'] && event.target['files'].length) {
+      this.file = event.target['files'][0];
+    }
+
   }
 }

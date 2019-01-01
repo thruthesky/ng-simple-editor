@@ -39,11 +39,18 @@
 }
 
 
+.editor[size='full'] .buttons.down {
+  position: fixed;
+  z-index: 12346;
+  bottom: 0;
+}
+
+
 .editor .buttons.icon button {
   display: inline-block;
   padding: .5em .4em;
   border: 0;
-  color: #555;
+  background-color: white;
 }
 
 .editor .buttons.icon button:hover {
@@ -52,8 +59,8 @@
 }
 
 .editor .buttons.icon svg {
-  width: 12px;
-  height: 12px;
+  width: 14px;
+  height: 14px;
   cursor: pointer;
 }
 
@@ -74,4 +81,25 @@
   height: 22px;
   overflow: hidden;
   opacity: 0.01;
+}
+
+
+.overlay {
+  position: relative;
+  overflow: hidden;
+}
+
+.overlay-cover {
+  position: absolute;
+  z-index: 12347;
+  top: -16px;
+  left: -16px;
+  right: -16px;
+  bottom: -16px;
+  opacity: 0.01;
+}
+
+
+.fs-xs {
+  font-size: 3em;
 }

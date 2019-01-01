@@ -9,11 +9,6 @@
 
 * [GitHub Page Demo](https://thruthesky.github.io/ng-simple-editor/)
 
-## Todos
-
-* undefined of name & idx attribute when image is inserted through the menu button.
-* `Failed to execute 'getRangeAt' on 'Selection': 0 is not a valid index.` error if the cursor is not on editor when file is inserted into editor after upload. Environemnt: chrome
-
 ## Example code
 
 * @see [Example Component Template](https://github.com/thruthesky/ng-simple-editor/blob/master/src/app/app.component.html)
@@ -160,6 +155,13 @@ HTML content: {{ editor4.content }}
     this.content = this.editor.content;
   }
 ````
+
+## Init options
+
+* `content` (string) - initial content. It may be overwritten by two-way binding. Default `empty string`.
+* `cursor` (boolean) - to put cursor inside editor. Default `false`.
+* `menuTop` (boolean) - to show menu buttons on top. Default `true`.
+* `menuBottom` (boolean) - to show menu buttons at bottom. Default `true`.
 
 ## How to upload files
 
