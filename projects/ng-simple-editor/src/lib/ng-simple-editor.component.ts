@@ -192,7 +192,7 @@ export class NgSimpleEditorComponent implements OnInit, OnChanges, AfterViewInit
     // this.htmlChange.emit(this.getContent());
 
     if (typeof this.onChange === 'function') {
-      console.log('onChange is function: ', this.getContent());
+      // console.log('onChange is function: ', this.getContent());
       this.onChange(this.getContent());
     }
   }
@@ -322,13 +322,17 @@ export class NgSimpleEditorComponent implements OnInit, OnChanges, AfterViewInit
    */
   setEndOfContenteditable() {
     const contentEditableElement = this.editorComponent.nativeElement;
-    let range, selection;
+    let selection: any;
+    let range: any;
+
     // Firefox, Chrome, Opera, Safari, IE 9+
     if (document.createRange) {
+      selection = window.getSelection(); // get the selection object (allows you to change selection)
       range = document.createRange(); // Create a range (a range is a like the selection but invisible)
+
       range.selectNodeContents(contentEditableElement); // Select the entire contents of the element with the range
       range.collapse(false); // collapse the range to the end point. false means collapse to end rather than the start
-      selection = window.getSelection(); // get the selection object (allows you to change selection)
+
       selection.removeAllRanges(); // remove any selections already made
       selection.addRange(range); // make the range you have just created the visible selection
     } else if (document['selection']) {
@@ -350,7 +354,17 @@ export class NgSimpleEditorComponent implements OnInit, OnChanges, AfterViewInit
     const element = this.editorComponent.nativeElement;
     let caretOffset = 0;
     if (typeof window.getSelection !== 'undefined') {
-      const range = window.getSelection().getRangeAt(0);
+      let range: any;
+      /**
+       * 왠지 모르겠지만, 여기서 DOMException 이 발생하고 이후 모두 실패가 된다.
+       * 여기서 커서 위치를 그냥 0 을 리턴해서 이후, 적절히 처리하도록 한다.
+       */
+      try {
+        range = window.getSelection().getRangeAt(0);
+      } catch {
+        console.log('getCaret() error');
+        return 0;
+      }
       const preCaretRange = range.cloneRange();
       preCaretRange.selectNodeContents(element);
       preCaretRange.setEnd(range.endContainer, range.endOffset);
@@ -523,10 +537,31 @@ export class NgSimpleEditorComponent implements OnInit, OnChanges, AfterViewInit
    *    this.editor.insertImage( 'http://domani.com/image.jpg', 'Image name', 'unique-no' );
    */
   insertImage(src?: string, name?: string, idx?: any) {
+
+    /**
+     * 만약, 현재 editor 에 커서가 없는 상태라면, 먼저 포커스를 준다.
+     * 이 부분은 꼭 필요한다.
+     */
+    if (this.getCaret()) {
+      this.editorComponent.nativeElement.focus();
+    }
+
+
     if (!src) {
       src = prompt('Enter a link', 'http://');
     }
-    if (!this.getCaret()) {
+    if (!src) {
+      console.log('src is empty');
+      return;
+    } else {
+      console.log('src: ', src);
+    }
+
+    /**
+     * 이미지가 선택된 상태에서도 커서가 없다면 커서를 맨 끝으로 이동한다.
+     */
+    const cursor = this.getCaret();
+    if (!cursor) {
       this.setEndOfContenteditable();
     }
     /**
@@ -537,7 +572,13 @@ export class NgSimpleEditorComponent implements OnInit, OnChanges, AfterViewInit
     }
     const tag = `<IMG class="editor-image" SRC="${src}" ALT="${name}" idx="${idx}" style="max-width: 100%;">`;
     this.execCommand('insertHTML', false, tag);
-    this.setEndOfContenteditable();
+    /**
+     * 커서가 없는 상태에서 이미지를 업로드하면 이미지가 맨 끝에 추가된다.
+     * 따라서, 커서도 맨 끝에 놓는다.
+     */
+    if (!cursor) {
+      this.setEndOfContenteditable();
+    }
   }
 
   /**
