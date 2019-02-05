@@ -2,7 +2,7 @@
 
 ## Why
 
-* I search Angular/Ionic Web editors and I couldn't find simple one. All of them have dependencies like jQury, Bootstrap, Fontawesome, etc.
+* I have searched for Angular/Ionic Web editors and I couldn't find simple one. All of them have dependencies like jQury, Bootstrap, Fontawesome, etc.
 * So I made one. It's deadly simple. Easy to edit. No dependencies at all.
 
 ## Demo
@@ -165,7 +165,9 @@ HTML content: {{ editor4.content }}
 
 ## How to upload files
 
-* `ng-simple-editor` does not have file/photo/video upload functionaliy. You have to make your own file upload function in your app. And then you can insert your uploaded file into editor using `editor.insertImage()` method.
+* `ng-simple-editor` does not have file/photo/video upload functionaliy but it has image buttons on the menu which selects a file when it is clicked. Then it fires `fileChange` event with the chosen file event. You can make your own file upload function in your app with this event.
+
+* You can insert image into the editor with `editor.insertImage()`.
 
 ## Design
 
@@ -189,6 +191,42 @@ div.editor
     }
 }
 ````
+
+### Design Example
+
+```` scss
+// Image design
+@mixin image {
+    img {
+        display: inline-block;
+        margin: .4em 0;
+        padding: .4em;
+        box-sizing: border-box;
+        background-color: #f3f3f3;
+    }
+}
+// Simple Editor Design
+.editor {
+    margin-bottom: 1em;
+    .content {
+        // height
+        height: auto !important;
+        min-height: 220px;
+        max-height: 340px;
+        @media all and (min-width: 768px) {
+            min-height: 400px;
+            max-height: 600px;
+        }
+        font-size: 1rem;
+        @include image();
+    }
+}
+// Post view page design which shows the post that are created by simple-editor.
+.post-content.simple-editor {
+    @include image();
+}
+````
+
 
 ## Tips
 

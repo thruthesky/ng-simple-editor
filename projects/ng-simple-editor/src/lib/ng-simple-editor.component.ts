@@ -550,12 +550,14 @@ export class NgSimpleEditorComponent implements OnInit, OnChanges, AfterViewInit
    *            You can assign any value to idx and it's up to you how you are going to handle it.
    * @example
    *    this.editor.insertImage( 'http://domani.com/image.jpg', 'Image name', 'unique-no' );
+   * @todo Inserting image onto the cursor position is not working properly. Need to be improved.
    */
   insertImage(src?: string, name = '', idx = '') {
 
     /**
-     * 만약, 현재 editor 에 커서가 없는 상태라면, 먼저 포커스를 준다.
-     * 이 부분은 꼭 필요한다.
+     * If the editor has no focus ( there is no cursor on the editor ),
+     * Then give it the focus first.
+     * ( this is mandatory )
      */
     if (this.getCaret()) {
       this.editorComponent.nativeElement.focus();
@@ -573,7 +575,7 @@ export class NgSimpleEditorComponent implements OnInit, OnChanges, AfterViewInit
     }
 
     /**
-     * 이미지가 선택된 상태에서도 커서가 없다면 커서를 맨 끝으로 이동한다.
+     * If an image is selected, then it move the cursor at the end of the editor.
      */
     const cursor = this.getCaret();
     if (!cursor) {
@@ -588,8 +590,9 @@ export class NgSimpleEditorComponent implements OnInit, OnChanges, AfterViewInit
     const tag = `<IMG class="editor-image" SRC="${src}" ALT="${name}" idx="${idx}" style="max-width: 100%;">`;
     this.execCommand('insertHTML', false, tag);
     /**
-     * 커서가 없는 상태에서 이미지를 업로드하면 이미지가 맨 끝에 추가된다.
-     * 따라서, 커서도 맨 끝에 놓는다.
+     * If an image uploaded when there is no cursor on the editor ( This may happens ),
+     * then add the image at the end of editor.
+     * And set the cursor at the end.
      */
     if (!cursor) {
       this.setEndOfContenteditable();
